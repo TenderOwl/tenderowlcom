@@ -10,6 +10,7 @@
     {{ block "meta" . }} {{end}}
 
     <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+    <link rel="manifest" href="/manifest.webmanifest">
 
     {{ if .Site.IsServer }}
     {{ $cssOpts := (dict "targetPath" "styles/main.css" "enableSourceMap" true ) }}
