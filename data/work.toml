@@ -1,0 +1,13 @@
+[projects]
+
+[projects.norka]
+name = 'Norka'
+description = 'Surprisingly handy notes editor for GNOME and elementary.'
+link = '/work/norka'
+icon = '/images/otter.svg'
+
+[projects.laska]
+name = 'Laska'
+description = 'High performance, multithreaded, extensible Dart server framework.'
+link = '/work/laska'
+icon = '/images/ermine.svg'

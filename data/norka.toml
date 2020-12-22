@@ -1,0 +1,23 @@
+[feature_markdown]
+name = "Markdown"
+preview = ""
+
+[feature_reading_time]
+name = "Reading time"
+preview = ""
+
+[feature_preview_content]
+name = "Preview content"
+preview = ""
+
+[feature_export]
+name = "Export"
+preview = "/work/export-menu.png"
+
+[feature_spellcheck]
+name = "Spell checking"
+preview = ""
+
+[feature_color_schemes]
+name = "Color schemes"
+preview = ""

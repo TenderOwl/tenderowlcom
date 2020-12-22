@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on TenderOwl</title>
+    <link>http://example.org/posts/</link>
+    <description>Recent content in Posts on TenderOwl</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 18 Dec 2020 11:26:21 +0300</lastBuildDate><atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to use WebSockets with Python and Gtk&#43;</title>
+      <link>http://example.org/posts/how-to-use-websockets-with-python-and-gtk-copy/</link>
+      <pubDate>Fri, 18 Dec 2020 11:26:21 +0300</pubDate>
+      
+      <guid>http://example.org/posts/how-to-use-websockets-with-python-and-gtk-copy/</guid>
+      <description>&lt;p&gt;Hey there! I&amp;rsquo;m here to present you an amazing trip to the native apps with WebSockets!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Lorem ipsum and etc.</title>
+      <link>http://example.org/posts/lorem-ipsum-and-etc/</link>
+      <pubDate>Fri, 18 Dec 2020 11:26:21 +0300</pubDate>
+      
+      <guid>http://example.org/posts/lorem-ipsum-and-etc/</guid>
+      <description>&lt;p&gt;Hey there! I&amp;rsquo;m here to present you an amazing trip to the native apps with WebSockets!&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

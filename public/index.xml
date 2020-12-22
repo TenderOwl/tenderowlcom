@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TenderOwl</title>
+    <link>http://example.org/</link>
+    <description>Recent content on TenderOwl</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 18 Dec 2020 11:26:21 +0300</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to use WebSockets with Python and Gtk&#43;</title>
+      <link>http://example.org/posts/how-to-use-websockets-with-python-and-gtk-copy/</link>
+      <pubDate>Fri, 18 Dec 2020 11:26:21 +0300</pubDate>
+      
+      <guid>http://example.org/posts/how-to-use-websockets-with-python-and-gtk-copy/</guid>
+      <description>&lt;p&gt;Hey there! I&amp;rsquo;m here to present you an amazing trip to the native apps with WebSockets!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Lorem ipsum and etc.</title>
+      <link>http://example.org/posts/lorem-ipsum-and-etc/</link>
+      <pubDate>Fri, 18 Dec 2020 11:26:21 +0300</pubDate>
+      
+      <guid>http://example.org/posts/lorem-ipsum-and-etc/</guid>
+      <description>&lt;p&gt;Hey there! I&amp;rsquo;m here to present you an amazing trip to the native apps with WebSockets!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Norka</title>
+      <link>http://example.org/work/norka/</link>
+      <pubDate>Fri, 18 Dec 2020 11:26:21 +0300</pubDate>
+      
+      <guid>http://example.org/work/norka/</guid>
+      <description>Markdown  Reading time  Preview content  Export  Spell checking  Color schemes   Text search Autosave Drag-n-drop import local files Export to files Export to Medium.com Export to Write.as Different color schemes for editor Document archiving And of course, you can delete them permanently  More to come!   Get Norka      If you feel enough power to contribute or fork feel free to do it.</description>
+    </item>
+    
+    <item>
+      <title>Server microframework for the Dart language</title>
+      <link>http://example.org/work/laska/</link>
+      <pubDate>Fri, 18 Dec 2020 11:26:21 +0300</pubDate>
+      
+      <guid>http://example.org/work/laska/</guid>
+      <description>&lt;p&gt;Laska is a server-side microframework for Dart.
+Currently, in development, not for production use.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+{{ define "main" }}
+
+<div class="container">
+    {{ .Content }}
+    <div class="row justify-around">
+        {{ range $.Site.Data.work.projects }}
+        <div class="col-12 col-4-md work-tile text-center">
+            <div class="work-icon flex justify-center">
+                <figure>
+                    <a href="{{ .link }}" class="link">
+                        <img src="{{ .icon }}" alt="{{ .name }}" width="160">
+                    </a>
+                </figure>
+            </div>
+            <h3>
+                <a href="{{ .link }}" class="link">
+                    {{ .name }}</a>
+            </h3>
+            <p>{{ .description }}</p>
+        </div>
+        {{ end }}
+    </div>
+</div>
+
+{{ end }}

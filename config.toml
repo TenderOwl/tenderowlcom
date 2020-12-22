@@ -1,0 +1,62 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "TenderOwl"
+# theme = "ananke"
+enableRobotsTXT = true
+assetsDir = "/assets"
+
+[markup.goldmark]
+[markup.goldmark.extensions]
+definitionList = true
+footnote = true
+linkify = true
+strikethrough = true
+table = true
+taskList = true
+typographer = true
+
+[markup.goldmark.parser]
+attribute = true
+autoHeadingID = true
+autoHeadingIDType = "github"
+
+[markup.goldmark.renderer]
+hardWraps = false
+unsafe = true
+xhtml = true
+
+[markup.highlight]
+anchorLineNos = false
+codeFences = true
+guessSyntax = true
+hl_Lines = ""
+lineAnchors = ""
+lineNumbersInTable = true
+noClasses = true
+style = "native"
+tabWidth = 4
+
+[markup.tableOfContents]
+endLevel = 3
+ordered = false
+startLevel = 2
+
+# [[menu.main]]
+# name = "Home"
+# url = "/"
+# weigth = 4
+
+[[menu.main]]
+name = "Work"
+url = "/Work"
+weigth = 3
+
+[[menu.main]]
+name = "Posts"
+url = "/Posts"
+weigth = 2
+
+# [[menu.main]]
+# name = "About"
+# url = "/About"
+# weigth = 1

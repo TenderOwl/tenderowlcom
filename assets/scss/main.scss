@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@200;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
+@import url(chota.css);
+@import "./flex.scss";
+@import "./spaces.scss";
+
+:root {
+  --bg-color: #ffffff;
+  --bg-secondary-color: #f3f3f6;
+  --color-primary: #305C73;
+  --color-lightGrey: #d2d6dd;
+  --color-grey: #747681;
+  --color-darkGrey: #3f4144;
+  --color-error: #d43939;
+  --color-success: #7dc245;
+  --color-muted: #3f4144;
+  --grid-maxWidth: 90rem;
+  --grid-gutter: 2rem;
+  --font-size: 1.6rem;
+  --font-color: #333333;
+  --font-family-sans: "Commissioner", sans-serif;
+  --font-family-mono: monaco, "Consolas", "Lucida Console", monospace;
+  --section-margin: 40px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #0b0c0d;
+    --bg-secondary-color: #232527;
+    --color-primary: #92c0df;
+    --color-lightGrey: #d2d6dd;
+    --color-grey: #747681;
+    --color-darkGrey: #3f4144;
+    --color-error: #d43939;
+    --color-success: #7dc245;
+    --color-muted: #747681;
+    --font-color: #d8d8d8;
+  }
+}
+
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+a {
+  text-decoration: none;
+
+  &.brand {
+    // padding-left: 0 !important;
+    background-image: url(/images/tender-owl.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 64px !important;
+    line-height: 64px;
+  }
+}
+
+header {
+  margin-top: var(--section-margin);
+  margin-bottom: var(--section-margin);
+}
+
+.nav {
+  .brand,
+  a {
+    color: var(--color-primary);
+  }
+}
+
+footer {
+  margin-top: var(--section-margin);
+  margin-bottom: var(--section-margin);
+  grid-row-start: 3;
+  grid-row-end: 4;
+
+  p {
+    color: var(--color-muted);
+  }
+}
+
+.section-bar {
+  border-top: 1px solid var(--bg-secondary-color);
+  padding-top: var(--section-margin);
+}
+
+.amatic {
+  font-family: "Amatic SC", cursive;
+}
+
+.text-6xl {
+  font-size: 6rem;
+}
+
+.work-tile {
+  img {
+    vertical-align: bottom;
+    margin-right: 1rem;
+  }
+}
+
+.hoover {
+  scale: 0.95;
+  border-radius: 4px;
+
+  &:hover {
+    box-shadow: 0 4px 8px var(--color-primary);
+    scale: 1;
+    transition-delay: 0.25s;
+    transition-duration: 0.4s;
+    border-radius: 2px;
+  }
+}

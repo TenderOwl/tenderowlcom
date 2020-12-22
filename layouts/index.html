@@ -1,0 +1,71 @@
+{{ define "main" }}
+
+
+<div class="container mb-5">
+  <div class="row">
+    <div class="col col-8-md">
+      <p>
+        Hey there! TenderOwl is small software company based in Moscow and is run by Andrey Maksimov me).
+        <br />
+        My goal is to create apps that do what you need without getting in your way. If you have a product-related
+        question please post an issue on the Github. If you need to contact me directly, please send email to
+        <a href="mailto:andrey@tenderowl.com">andrey@tenderowl.com</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="section-bar">
+  <div class="container mb-5">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="">Work</h2>
+      </div>
+    </div>
+
+    <div class="row justify-between">
+      {{ range $.Site.Data.work.projects }}
+      <div class="col-12 col-5-md work-tile">
+        <h3>
+          <a href="{{ .link }}" class="link">
+            <img src="{{ .icon }}" alt="{{ .name }}" width="48">
+            {{ .name }}</a>
+        </h3>
+        <p>{{ .description }}</p>
+      </div>
+      {{ end }}
+    </div>
+    <div class="row">
+      <div class="col">
+        <a href="/work/">See all projects &rsaquo;</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="section-bar">
+  <div class="container mb-5">
+    <div class="row">
+      <h2>Posts</h2>
+    </div>
+    <div class="row justify-between">
+      {{ $recent := where .Site.RegularPages "Section" "in" ("posts") }}
+      {{ range first 4 $recent }}
+      <div class="col-12 col-5-md work-tile">
+        <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+        <div class="summary">
+          {{ .Summary }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    <div class="row">
+      <div class="col">
+        <a href="/posts/">See all posts &rsaquo;</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ end }}
