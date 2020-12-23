@@ -1,7 +1,13 @@
 {{ define "main"}}
-    <main id="main">
-      <div>
-       <h1 id="title"><a href="{{ "/" | relURL }}">Go Home</a></h1>
-      </div>
-    </main>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <figure>
+                <img src="/images/undraw_Taken.svg" alt="This page was taken away." width="256">
+            </figure>
+            
+            <h1 id="title">The page was taken away. <br/><a href="{{ " /" | relURL }}">Start from the beginning.</a></h1>
+        </div>
+    </div>
+</div>
 {{ end }}
