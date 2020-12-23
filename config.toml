@@ -5,6 +5,11 @@ title = "TenderOwl"
 enableRobotsTXT = true
 assetsDir = "/assets"
 
+[sitemap]
+  changefreq = "monthly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
 [markup.goldmark]
 [markup.goldmark.extensions]
 definitionList = true
