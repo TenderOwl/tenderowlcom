@@ -3,15 +3,18 @@
 
 <div class="container mb-5">
   <div class="row justify-between">
-    <div class="col col-12-md" style="display: flex;align-items: center;justify-content: space-between;">
-      <div>
-        Hey there! TenderOwl is small software company based in Moscow and is run by Andrey Maksimov me).
-        <br />
-        My goal is to create apps that do what you need without getting in your way. If you have a product-related
-        question please post an issue on the Github. If you need to contact me directly, please send email to
-        <a href="mailto:andrey@tenderowl.com">andrey@tenderowl.com</a>.
+    <div class="col col-12-md" style="display: flex;align-items: center;justify-content: space-between;flex-wrap: wrap;">
+      <div style="flex: 1;">
+        <p>
+          Hey there! TenderOwl is small software company based in Moscow and is run by Andrey Maksimov me).
+          <br />
+          My goal is to create apps that do what you need without getting in your way. If you have a product-related
+          question please post an issue on the Github. If you need to contact me directly, please send email to
+          <a href="mailto:andrey@tenderowl.com">andrey@tenderowl.com</a>.
+        </p>
       </div>
-      <img src="/images/javascript-coding-language.svg" alt="Programmer illustration" width="300" height="300" style="margin-left: 40px;">
+      <img src="/images/javascript-coding-language.svg" alt="Programmer illustration" width="300" height="300"
+        style="flex-basis: 300px;">
     </div>
   </div>
 </div>
@@ -48,7 +51,9 @@
 <div class="section-bar">
   <div class="container mb-5">
     <div class="row">
-      <h2>Posts</h2>
+      <div class="col">
+        <h2>Posts</h2>
+      </div>
     </div>
     <div class="row justify-between">
       {{ $recent := where .Site.RegularPages "Section" "in" ("posts") }}
