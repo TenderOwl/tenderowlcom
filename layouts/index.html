@@ -28,7 +28,7 @@
     </div>
 
     <div class="row justify-between">
-      {{ range $.Site.Data.work.projects }}
+      {{ range sort $.Site.Data.work.projects "weight" }}
       <div class="col-12 col-5-md work-tile">
         <h3>
           <a href="{{ .link }}" class="link">

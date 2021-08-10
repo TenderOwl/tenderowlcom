@@ -3,8 +3,8 @@
 <div class="container">
     {{ .Content }}
     <div class="row justify-around">
-        {{ range $.Site.Data.work.projects }}
-        <div class="col-12 col-4-md work-tile text-center">
+        {{ range sort $.Site.Data.work.projects "weight" }}
+        <div class="col-12 col-6-md work-tile text-center">
             <div class="work-icon flex justify-center">
                 <figure>
                     <a href="{{ .link }}" class="link">
