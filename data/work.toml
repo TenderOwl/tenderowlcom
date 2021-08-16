@@ -2,7 +2,7 @@
 
 [projects.norka]
 name = 'Norka'
-description = 'Surprisingly handy notes editor for GNOME and elementary.'
+description = 'Surprisingly handy notes editor for elementary OS.'
 link = '/work/norka'
 icon = '/images/otter.svg'
 weight = 1
@@ -12,11 +12,18 @@ name = 'Laska'
 description = 'High performance, multithreaded, extensible Dart server framework.'
 link = '/work/laska'
 icon = '/images/ermine.svg'
-weight = 3
+weight = 4
 
 [projects.turtle]
 name = 'Turtle'
-description = 'Create menu entry for any app event AppImage.'
+description = 'Create menu entry for any app even AppImage.'
 link = '/work/turtle'
 icon = '/images/turtle.svg'
+weight = 3
+
+[projects.frog]
+name = 'Frog'
+description = 'Extract texte from anywhere.'
+link = '/work/frog'
+icon = '/images/frog.svg'
 weight = 2

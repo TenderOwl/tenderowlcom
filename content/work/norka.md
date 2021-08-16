@@ -2,6 +2,7 @@
 title: "Norka"
 date: 2020-12-18T11:26:21+03:00
 draft: false
+description: "Surprisingly handy notes editor for elementary OS"
 ---
 
 

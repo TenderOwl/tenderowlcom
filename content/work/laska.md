@@ -2,6 +2,7 @@
 title: "Server microframework for the Dart language"
 date: 2020-12-18T11:26:21+03:00
 draft: false
+description: "High performance, multithreaded, extensible Dart server framework."
 ---
 
 

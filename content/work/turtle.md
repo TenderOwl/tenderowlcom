@@ -2,6 +2,7 @@
 title: "Turtle"
 date: 2021-08-10T10:38:12+03:00
 draft: false
+description: "Create menu entry for any app event AppImage  with Turtle for elementary OS"
 ---
 
 
