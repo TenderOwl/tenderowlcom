@@ -2,7 +2,7 @@
 title: "How to use WebSockets with Python and GTK+"
 date: 2020-12-18T11:26:21+03:00
 draft: false
-description: ""
+description: "Tutorial shares the experience on how to use  WebSockets with Python and GTK"
 ---
 
 
