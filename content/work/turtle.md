@@ -18,7 +18,10 @@ description: "Create menu entry for any app event AppImage  with Turtle for elem
     <div class="col">
         <h2 class="text-6xl amatic mb-10">Get Turtle</h2>
         <div class=" mb-4">
-            Ah, not available yet.
+            <a href="https://appcenter.elementary.io/com.github.tenderowl.turtle"
+                    onclick="ym(48108788,'reachGoal','appcenter')"><img
+                        src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter"
+                        style="height: 50px;"></a>
         </div>
         <p class="py-8">
             If you feel enough power to contribute or fork feel free to do it. Source code
