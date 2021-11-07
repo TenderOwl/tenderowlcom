@@ -6,10 +6,16 @@ description: "Create menu entry for any app event AppImage  with Turtle for elem
 ---
 
 
+Add any launcherless applications to the Applications Menu—even AppImages or downloaded binaries. Just open Turtle, navigate to the app, and select a name and image to show in the Applications Menu.
+
+
 <div class="row">
     <div class="col">
         <div class="text-center">
-            <video src="/work/images/makeadesktop.mp4" controls />
+            <video controls>
+                <source src="/work/images/makeadesktop.mp4"  type="video/mp4">
+                Your browser doesn't support HTML5 video tag.
+            </video>
         </div>
     </div>
 </div>
