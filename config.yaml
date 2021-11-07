@@ -1,0 +1,71 @@
+baseURL: "https://tenderowl.com/"
+languageCode: en-us
+title: TenderOwl
+enableRobotsTXT: true
+assetsDir: /assets
+
+author:
+  name: Andrey Maksimov
+copyright: This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+  International License.
+
+languages:
+  en:
+    weight: 1
+  ru:
+    weight: 2
+    menu:
+      main:
+        - name: Блог
+          url: /Posts
+          weight: 2
+        - name: Работа
+          url: /Work
+          weight: 3
+
+sitemap:
+  changefreq: monthly
+  filename: sitemap.xml
+  priority: 0.5
+
+markup:
+  goldmark:
+    extensions:
+      definitionList: true
+      footnote: true
+      linkify: true
+      strikethrough: true
+      table: true
+      taskList: true
+      typographer: true
+    parser:
+      attribute: true
+      autoHeadingID: true
+      autoHeadingIDType: github
+    renderer:
+      hardWraps: false
+      unsafe: true
+      xhtml: true
+  highlight:
+    anchorLineNos: false
+    codeFences: true
+    guessSyntax: true
+    hl_Lines: ""
+    lineAnchors: ""
+    lineNumbersInTable: true
+    noClasses: true
+    style: native
+    tabWidth: 4
+  tableOfContents:
+    endLevel: 3
+    ordered: false
+    startLevel: 2
+
+menu:
+  main:
+    - name: Work
+      url: /Work
+      weigth: 3
+    - name: Posts
+      url: /Posts
+      weigth: 2
