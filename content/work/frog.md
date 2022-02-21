@@ -25,7 +25,7 @@ Quickly extract non-selectable text from anywhere: videos, PDFs, screencasts, we
 <div class="row">
     <div class="col">
         <div class="text-center">
-              <video controls width="800" src="/work/images/frog/frog-in-action.mp4" alt="Frog in action" />
+              <video controls width="800" src="/work/images/frog/frog-in-action.m4v" alt="Frog in action" />
           </div>
     </div>
 </div>
