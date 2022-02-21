@@ -32,7 +32,7 @@ Quickly extract non-selectable text from anywhere: videos, PDFs, screencasts, we
 
 <div class="row">
     <div class="col">
-        <h2 class="text-6xl amatic mb-10">Get Turtle</h2>
+        <h2 class="text-6xl amatic mb-10">Get Frog</h2>
         <div class=" mb-4">
             <a href="https://appcenter.elementary.io/com.github.tenderowl.frog"
                     onclick="ym(48108788,'reachGoal','appcenter')"><img
