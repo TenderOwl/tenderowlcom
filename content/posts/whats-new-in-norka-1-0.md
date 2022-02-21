@@ -7,11 +7,13 @@ description: "Norka reached version 1.0 and is now available for download. This 
 
 ---
 
-# What's new in Norka 1.0
+![Norka editor](https://raw.githubusercontent.com/TenderOwl/Norka/master/data/screenshots/norka-editor.png)
 
 Nearly two years ago, Norka was born, a note-taking application made specifically for elementary OS and also distributed via Flathub. This version was far from version 1.0, its functionality was limited only to essential things: editing, searching, autosaving. Later, it introduced document search, export to various formats, spell checking, convenient keyboard shortcuts for editing, the ability to preview documents in HTML and statistics, etc. This was enough to start, but there was room for improvement. One possibility might be the ability to group notes in a folder and structure the user's resources in a certain way. So what's new comes in version 1.0?
 
 ## Folders
+
+![Folders and documents](https://raw.githubusercontent.com/TenderOwl/Norka/master/data/screenshots/norka-grid.png)
 
 The main and most important innovation is the ability to structure documents using folders. Folders can be created by clicking on a button in the header bar or by dragging documents onto each other. In this case, you will see a window displaying a suggestion for a folder name.
 
