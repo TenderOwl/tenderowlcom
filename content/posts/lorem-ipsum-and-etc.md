@@ -1,13 +1,13 @@
 ---
-title: "Lorem ipsum and etc."
+title: "What's new in Norka 0.8.0"
 date: 2020-12-18T11:26:21+03:00
 draft: true
 tags: python, gtk+, gtk-3, websockets
-description: "python gtk tutorial how to work with websockets"
+description: "What's new in the new version 0.8.0 of the notes app Norka for elementary OS"
 ---
 
 
-Hey there! I'm here to present you an amazing trip to the native apps with WebSockets!
+A long time ago Norka came to the Flathub repository and elementary OS. Since then we've made and released a few new applications such as Frog and Turtle, but improvements of Norka were required a lot of time to implement. And while we're working on version 1.0 some of its features are already available to our users. Let's describe what's new.
 
 <!--more-->
  In this current case we will be using these technologies:
