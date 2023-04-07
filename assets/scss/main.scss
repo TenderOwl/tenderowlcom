@@ -53,10 +53,10 @@ a {
 
   &.brand {
     // padding-left: 0 !important;
-    background-image: url(/images/tender-owl.svg);
+    background-image: url(/images/tender-owl-icon.png);
     background-size: contain;
     background-repeat: no-repeat;
-    padding-left: 64px !important;
+    padding-left: calc(64px + 16px) !important;
     line-height: 64px;
     font-family: 'Amatic SC', 'Noto Sans', 'Helvetica Neue', sans-serif;
     font-size: 4rem !important;
