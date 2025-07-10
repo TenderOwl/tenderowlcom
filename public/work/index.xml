@@ -1,2 +1,374 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Works on TenderOwl</title><link>http://example.org/work/</link><description>Recent content in Works on TenderOwl</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 18 Dec 2020 11:26:21 +0300</lastBuildDate><atom:link href="http://example.org/work/index.xml" rel="self" type="application/rss+xml"/><item><title>Norka</title><link>http://example.org/work/norka/</link><pubDate>Fri, 18 Dec 2020 11:26:21 +0300</pubDate><guid>http://example.org/work/norka/</guid><description>Markdown Reading time Preview content Export Spell checking Color schemes Text search Autosave Drag-n-drop import local files Export to files Export to Medium.com Export to Write.as Different color schemes for editor Document archiving And of course, you can delete them permanently More to come! Get Norka If you feel enough power to contribute or fork feel free to do it.</description></item><item><title>Server microframework for the Dart language</title><link>http://example.org/work/laska/</link><pubDate>Fri, 18 Dec 2020 11:26:21 +0300</pubDate><guid>http://example.org/work/laska/</guid><description>&lt;p>Laska is a server-side microframework for Dart.
-Currently, in development, not for production use.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:yandex="http://news.yandex.ru"
+     xmlns:media="http://search.yahoo.com/mrss/"
+     xmlns:turbo="http://turbo.yandex.ru"
+     version="2.0">
+  <channel>
+    <title>Works on TenderOwl</title>
+    <link>http://localhost:1313/work/</link>
+    <description>Recent content in Works on TenderOwl</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 10 Aug 2021 10:38:12 +0300</lastBuildDate><atom:link href="http://localhost:1313/work/index.xml" rel="self" type="application/rss+xml" />
+    <item turbo="true">
+      <turbo:extendedHtml>true</turbo:extendedHtml>
+      <title>Turtle</title>
+      <link>http://localhost:1313/work/turtle/</link>
+      <pubDate>Tue, 10 Aug 2021 10:38:12 +0300</pubDate>
+      
+      <guid>http://localhost:1313/work/turtle/</guid>
+      <description>&lt;p&gt;Add any launcherless applications to the Applications Menu—even AppImages or downloaded binaries. Just open Turtle, navigate to the app, and select a name and image to show in the Applications Menu.&lt;/p&gt;
+&lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col&#34;&gt;
+        &lt;div class=&#34;text-center&#34;&gt;
+            &lt;video controls&gt;
+                &lt;source src=&#34;http://localhost:1313/work/images/makeadesktop.mp4&#34;  type=&#34;video/mp4&#34;&gt;
+                Your browser doesn&#39;t support HTML5 video tag.
+            &lt;/video&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col&#34;&gt;
+        &lt;h2 class=&#34;text-6xl amatic mb-10&#34;&gt;Get Turtle&lt;/h2&gt;
+        &lt;div class=&#34; mb-4&#34;&gt;
+            &lt;a href=&#34;https://appcenter.elementary.io/com.github.tenderowl.turtle&#34;
+                    onclick=&#34;ym(48108788,&#39;reachGoal&#39;,&#39;appcenter&#39;)&#34;&gt;&lt;img
+                        src=&#34;https://appcenter.elementary.io/badge.svg&#34; alt=&#34;Get it on AppCenter&#34;
+                        style=&#34;height: 50px;&#34;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p class=&#34;py-8&#34;&gt;
+            If you feel enough power to contribute or fork feel free to do it. Source code
+            &lt;a href=&#34;https://github.com/TenderOwl/Turtle/&#34; title=&#34;&#34; class=&#34;px-1&#34;&gt;
+            &lt;svg width=&#34;20&#34; height=&#34;19&#34; fill=&#34;currentColor&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;inline&#34;&gt;
+                    &lt;path d=&#34;M10 0c1.814 0 3.487.435 5.02 1.306a9.827 9.827 0 0 1 3.639 3.542A9.33 9.33 0 0 1 20 9.734c0 2.121-.636 4.03-1.908 5.723a9.783 9.783 0 0 1-4.928 3.518c-.234.042-.408.012-.52-.09a.49.49 0 0 1-.17-.38l.006-.969c.005-.621.007-1.19.007-1.705 0-.82-.226-1.42-.677-1.8.495-.05.94-.126 1.335-.228a5.4 5.4 0 0 0 1.223-.494 3.62 3.62 0 0 0 1.055-.843c.282-.334.512-.777.69-1.33.178-.554.267-1.19.267-1.909a3.7 3.7 0 0 0-1.028-2.61c.32-.77.286-1.631-.105-2.586-.243-.076-.594-.03-1.054.14-.46.168-.86.354-1.198.557l-.495.304a9.478 9.478 0 0 0-2.5-.33c-.86 0-1.693.11-2.5.33a11.6 11.6 0 0 0-.553-.342c-.23-.135-.593-.298-1.088-.488-.494-.19-.863-.247-1.106-.171-.391.955-.426 1.816-.105 2.585A3.7 3.7 0 0 0 3.62 9.227c0 .719.089 1.352.267 1.902.178.549.406.993.683 1.33.278.339.627.622 1.048.85a5.4 5.4 0 0 0 1.224.494c.395.102.84.178 1.335.228-.338.305-.551.74-.638 1.306a2.631 2.631 0 0 1-.586.19 3.782 3.782 0 0 1-.742.063c-.287 0-.57-.09-.853-.272a2.256 2.256 0 0 1-.723-.792 2.068 2.068 0 0 0-.631-.66c-.256-.168-.471-.27-.645-.304l-.26-.038c-.182 0-.308.02-.378.057-.07.038-.09.087-.065.146.026.06.065.118.117.178.053.059.109.11.17.152l.09.063c.192.085.38.245.567.482.187.236.324.452.41.646l.13.292c.113.32.304.58.574.78.269.198.56.325.872.38.312.054.614.084.905.088.29.004.532-.01.723-.044l.299-.05c0 .32.002.694.007 1.12l.006.692a.49.49 0 0 1-.17.38c-.112.101-.286.13-.52.089a9.783 9.783 0 0 1-4.928-3.518C.636 13.763 0 11.855 0 9.734a9.33 9.33 0 0 1 1.341-4.886 9.827 9.827 0 0 1 3.64-3.542C6.512.436 8.185 0 10 0zM3.79 13.98c.025-.058-.005-.11-.092-.151-.087-.026-.143-.017-.17.025-.025.06.005.11.092.152.078.05.134.042.17-.025zm.403.432c.06-.043.052-.11-.026-.203-.087-.076-.157-.089-.209-.038-.06.042-.052.11.026.203.087.084.157.097.209.038zm.39.57c.078-.06.078-.14 0-.24-.07-.11-.143-.136-.221-.077-.078.042-.078.118 0 .228.078.11.152.14.221.089zm.547.532c.07-.067.052-.148-.052-.24-.104-.102-.19-.115-.26-.039-.078.068-.061.148.052.241.104.102.19.114.26.038zm.742.317c.026-.093-.03-.16-.169-.203-.13-.033-.213-.004-.247.09-.035.092.021.155.169.19.13.05.213.025.247-.077zm.82.064c0-.11-.073-.157-.22-.14-.14 0-.209.047-.209.14 0 .11.074.156.221.139.14 0 .209-.046.209-.14zm.756-.127c-.017-.093-.096-.131-.234-.114-.14.025-.2.088-.183.19.018.101.096.135.235.101.139-.034.2-.093.182-.177z&#34; fill-rule=&#34;nonzero&#34;&gt;&lt;/path&gt;
+                &lt;/svg&gt;
+                Available on GitHub
+            &lt;/a&gt;
+        &lt;/p&gt;</description>
+      <turbo:content>
+        <![CDATA[
+            <p>Add any launcherless applications to the Applications Menu—even AppImages or downloaded binaries. Just open Turtle, navigate to the app, and select a name and image to show in the Applications Menu.</p>
+<div class="row">
+    <div class="col">
+        <div class="text-center">
+            <video controls>
+                <source src="/work/images/makeadesktop.mp4"  type="video/mp4">
+                Your browser doesn't support HTML5 video tag.
+            </video>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <h2 class="text-6xl amatic mb-10">Get Turtle</h2>
+        <div class=" mb-4">
+            <a href="https://appcenter.elementary.io/com.github.tenderowl.turtle"
+                    onclick="ym(48108788,'reachGoal','appcenter')"><img
+                        src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter"
+                        style="height: 50px;"></a>
+        </div>
+        <p class="py-8">
+            If you feel enough power to contribute or fork feel free to do it. Source code
+            <a href="https://github.com/TenderOwl/Turtle/" title="" class="px-1">
+            <svg width="20" height="19" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="inline">
+                    <path d="M10 0c1.814 0 3.487.435 5.02 1.306a9.827 9.827 0 0 1 3.639 3.542A9.33 9.33 0 0 1 20 9.734c0 2.121-.636 4.03-1.908 5.723a9.783 9.783 0 0 1-4.928 3.518c-.234.042-.408.012-.52-.09a.49.49 0 0 1-.17-.38l.006-.969c.005-.621.007-1.19.007-1.705 0-.82-.226-1.42-.677-1.8.495-.05.94-.126 1.335-.228a5.4 5.4 0 0 0 1.223-.494 3.62 3.62 0 0 0 1.055-.843c.282-.334.512-.777.69-1.33.178-.554.267-1.19.267-1.909a3.7 3.7 0 0 0-1.028-2.61c.32-.77.286-1.631-.105-2.586-.243-.076-.594-.03-1.054.14-.46.168-.86.354-1.198.557l-.495.304a9.478 9.478 0 0 0-2.5-.33c-.86 0-1.693.11-2.5.33a11.6 11.6 0 0 0-.553-.342c-.23-.135-.593-.298-1.088-.488-.494-.19-.863-.247-1.106-.171-.391.955-.426 1.816-.105 2.585A3.7 3.7 0 0 0 3.62 9.227c0 .719.089 1.352.267 1.902.178.549.406.993.683 1.33.278.339.627.622 1.048.85a5.4 5.4 0 0 0 1.224.494c.395.102.84.178 1.335.228-.338.305-.551.74-.638 1.306a2.631 2.631 0 0 1-.586.19 3.782 3.782 0 0 1-.742.063c-.287 0-.57-.09-.853-.272a2.256 2.256 0 0 1-.723-.792 2.068 2.068 0 0 0-.631-.66c-.256-.168-.471-.27-.645-.304l-.26-.038c-.182 0-.308.02-.378.057-.07.038-.09.087-.065.146.026.06.065.118.117.178.053.059.109.11.17.152l.09.063c.192.085.38.245.567.482.187.236.324.452.41.646l.13.292c.113.32.304.58.574.78.269.198.56.325.872.38.312.054.614.084.905.088.29.004.532-.01.723-.044l.299-.05c0 .32.002.694.007 1.12l.006.692a.49.49 0 0 1-.17.38c-.112.101-.286.13-.52.089a9.783 9.783 0 0 1-4.928-3.518C.636 13.763 0 11.855 0 9.734a9.33 9.33 0 0 1 1.341-4.886 9.827 9.827 0 0 1 3.64-3.542C6.512.436 8.185 0 10 0zM3.79 13.98c.025-.058-.005-.11-.092-.151-.087-.026-.143-.017-.17.025-.025.06.005.11.092.152.078.05.134.042.17-.025zm.403.432c.06-.043.052-.11-.026-.203-.087-.076-.157-.089-.209-.038-.06.042-.052.11.026.203.087.084.157.097.209.038zm.39.57c.078-.06.078-.14 0-.24-.07-.11-.143-.136-.221-.077-.078.042-.078.118 0 .228.078.11.152.14.221.089zm.547.532c.07-.067.052-.148-.052-.24-.104-.102-.19-.115-.26-.039-.078.068-.061.148.052.241.104.102.19.114.26.038zm.742.317c.026-.093-.03-.16-.169-.203-.13-.033-.213-.004-.247.09-.035.092.021.155.169.19.13.05.213.025.247-.077zm.82.064c0-.11-.073-.157-.22-.14-.14 0-.209.047-.209.14 0 .11.074.156.221.139.14 0 .209-.046.209-.14zm.756-.127c-.017-.093-.096-.131-.234-.114-.14.025-.2.088-.183.19.018.101.096.135.235.101.139-.034.2-.093.182-.177z" fill-rule="nonzero"></path>
+                </svg>
+                Available on GitHub
+            </a>
+        </p>
+    </div>
+</div>
+</div>
+
+        ]]>
+    </turbo:content>
+    </item>
+    
+    <item turbo="true">
+      <turbo:extendedHtml>true</turbo:extendedHtml>
+      <title>Norka</title>
+      <link>http://localhost:1313/work/norka/</link>
+      <pubDate>Fri, 18 Dec 2020 11:26:21 +0300</pubDate>
+      
+      <guid>http://localhost:1313/work/norka/</guid>
+      <description>&lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col&#34;&gt;
+        &lt;div class=&#34;text-center&#34;&gt;
+            &lt;img src=&#34;http://localhost:1313/work/images/editor-mix.png&#34; alt=&#34;&#34;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col col-6 col-4-md text-center&#34;&gt;
+        &lt;h3 class=&#34;text-xl text-center mt-8&#34;&gt;Markdown&lt;/h3&gt;
+        &lt;img src=&#34;http://localhost:1313/work/images/markup.png&#34; class=&#34;mx-auto my-2 rounded-md hoover&#34; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col col-6 col-4-md text-center&#34;&gt;
+        &lt;h3 class=&#34;text-xl text-center mt-8&#34;&gt;Reading time&lt;/h3&gt;
+        &lt;img src=&#34;http://localhost:1313/work/images/reading-time.png&#34; class=&#34;mx-auto my-2 rounded-md hoover&#34; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col col-6 col-4-md text-center&#34;&gt;
+        &lt;h3 class=&#34;text-xl text-center mt-8&#34;&gt;Preview content&lt;/h3&gt;
+        &lt;img src=&#34;http://localhost:1313/work/images/preview-grid.png&#34; class=&#34;mx-auto my-2 rounded-md hoover&#34; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col col-6 col-4-md text-center&#34;&gt;
+        &lt;h3 class=&#34;text-xl text-center mt-8&#34;&gt;Export&lt;/h3&gt;
+        &lt;img src=&#34;http://localhost:1313/work/images/export-menu.png&#34; class=&#34;mx-auto my-2 rounded-md hoover&#34; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col col-6 col-4-md text-center&#34;&gt;
+        &lt;h3 class=&#34;text-xl text-center mt-8&#34;&gt;Spell checking&lt;/h3&gt;
+        &lt;img src=&#34;http://localhost:1313/work/images/spellcheck.png&#34; class=&#34;mx-auto my-2 rounded-md hoover&#34; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col col-6 col-4-md text-center&#34;&gt;
+        &lt;h3 class=&#34;text-xl text-center mt-8&#34;&gt;Color schemes&lt;/h3&gt;
+        &lt;img src=&#34;http://localhost:1313/work/images/schemes.png&#34; class=&#34;mx-auto my-2 rounded-md hoover&#34; /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col&#34;&gt;
+        &lt;ul class=&#34;list-disc pl-8 pb-4&#34;&gt;
+            &lt;li&gt;Text search&lt;/li&gt;
+            &lt;li&gt;Autosave&lt;/li&gt;
+            &lt;li&gt;Drag-n-drop import local files&lt;/li&gt;
+            &lt;li&gt;Export to files&lt;/li&gt;
+            &lt;li&gt;Export to Medium.com&lt;/li&gt;
+            &lt;li&gt;Export to Write.as&lt;/li&gt;
+            &lt;li&gt;Different color schemes for editor&lt;/li&gt;
+            &lt;li&gt;Document archiving&lt;/li&gt;
+            &lt;li&gt;And of course, you can delete them permanently&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;h3 class=&#34;text-4xl amatic&#34;&gt;More to come!&lt;/h3&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col&#34;&gt;
+        &lt;h2 class=&#34;text-6xl amatic mb-10&#34;&gt;Get Norka&lt;/h2&gt;
+        &lt;div class=&#34; mb-4&#34;&gt;
+            &lt;div class=&#34;text-center items-center&#34;&gt;
+                &lt;a href=&#34;https://snapcraft.io/norka&#34; rel=&#34;nofollow&#34;
+                    onclick=&#34;ym(48108788,&#39;reachGoal&#39;,&#39;snapstore&#39;)&#34; class=&#34;mx-5&#34;&gt;&lt;img height=&#34;50&#34;
+                        alt=&#34;Get it from the Snap Store&#34;
+                        src=&#34;https://snapcraft.io/static/images/badges/en/snap-store-black.svg&#34;
+                        style=&#34;height: 50px;&#34;&gt;&lt;/a&gt;
+                &lt;a href=&#34;https://flathub.org/apps/details/com.github.tenderowl.norka&#34; rel=&#34;nofollow&#34;
+                    onclick=&#34;ym(48108788,&#39;reachGoal&#39;,&#39;flathub&#39;)&#34; class=&#34;mx-5&#34;&gt;&lt;img height=&#34;50&#34;
+                        alt=&#34;Download on Flathub&#34; src=&#34;https://flathub.org/assets/badges/flathub-badge-en.png&#34;
+                        style=&#34;height: 50px;&#34;&gt;&lt;/a&gt;
+                &lt;a href=&#34;https://appcenter.elementary.io/com.github.tenderowl.norka&#34;
+                    onclick=&#34;ym(48108788,&#39;reachGoal&#39;,&#39;appcenter&#39;)&#34;&gt;&lt;img
+                        src=&#34;https://appcenter.elementary.io/badge.svg&#34; alt=&#34;Get it on AppCenter&#34;
+                        style=&#34;height: 50px;&#34;&gt;&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;p class=&#34;py-8&#34;&gt;
+            If you feel enough power to contribute or fork feel free to do it. Source code
+            &lt;a href=&#34;https://github.com/TenderOwl/Norka/&#34; title=&#34;&#34; class=&#34;px-1&#34;&gt;
+            &lt;svg width=&#34;20&#34; height=&#34;19&#34; fill=&#34;currentColor&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;inline&#34;&gt;
+                    &lt;path d=&#34;M10 0c1.814 0 3.487.435 5.02 1.306a9.827 9.827 0 0 1 3.639 3.542A9.33 9.33 0 0 1 20 9.734c0 2.121-.636 4.03-1.908 5.723a9.783 9.783 0 0 1-4.928 3.518c-.234.042-.408.012-.52-.09a.49.49 0 0 1-.17-.38l.006-.969c.005-.621.007-1.19.007-1.705 0-.82-.226-1.42-.677-1.8.495-.05.94-.126 1.335-.228a5.4 5.4 0 0 0 1.223-.494 3.62 3.62 0 0 0 1.055-.843c.282-.334.512-.777.69-1.33.178-.554.267-1.19.267-1.909a3.7 3.7 0 0 0-1.028-2.61c.32-.77.286-1.631-.105-2.586-.243-.076-.594-.03-1.054.14-.46.168-.86.354-1.198.557l-.495.304a9.478 9.478 0 0 0-2.5-.33c-.86 0-1.693.11-2.5.33a11.6 11.6 0 0 0-.553-.342c-.23-.135-.593-.298-1.088-.488-.494-.19-.863-.247-1.106-.171-.391.955-.426 1.816-.105 2.585A3.7 3.7 0 0 0 3.62 9.227c0 .719.089 1.352.267 1.902.178.549.406.993.683 1.33.278.339.627.622 1.048.85a5.4 5.4 0 0 0 1.224.494c.395.102.84.178 1.335.228-.338.305-.551.74-.638 1.306a2.631 2.631 0 0 1-.586.19 3.782 3.782 0 0 1-.742.063c-.287 0-.57-.09-.853-.272a2.256 2.256 0 0 1-.723-.792 2.068 2.068 0 0 0-.631-.66c-.256-.168-.471-.27-.645-.304l-.26-.038c-.182 0-.308.02-.378.057-.07.038-.09.087-.065.146.026.06.065.118.117.178.053.059.109.11.17.152l.09.063c.192.085.38.245.567.482.187.236.324.452.41.646l.13.292c.113.32.304.58.574.78.269.198.56.325.872.38.312.054.614.084.905.088.29.004.532-.01.723-.044l.299-.05c0 .32.002.694.007 1.12l.006.692a.49.49 0 0 1-.17.38c-.112.101-.286.13-.52.089a9.783 9.783 0 0 1-4.928-3.518C.636 13.763 0 11.855 0 9.734a9.33 9.33 0 0 1 1.341-4.886 9.827 9.827 0 0 1 3.64-3.542C6.512.436 8.185 0 10 0zM3.79 13.98c.025-.058-.005-.11-.092-.151-.087-.026-.143-.017-.17.025-.025.06.005.11.092.152.078.05.134.042.17-.025zm.403.432c.06-.043.052-.11-.026-.203-.087-.076-.157-.089-.209-.038-.06.042-.052.11.026.203.087.084.157.097.209.038zm.39.57c.078-.06.078-.14 0-.24-.07-.11-.143-.136-.221-.077-.078.042-.078.118 0 .228.078.11.152.14.221.089zm.547.532c.07-.067.052-.148-.052-.24-.104-.102-.19-.115-.26-.039-.078.068-.061.148.052.241.104.102.19.114.26.038zm.742.317c.026-.093-.03-.16-.169-.203-.13-.033-.213-.004-.247.09-.035.092.021.155.169.19.13.05.213.025.247-.077zm.82.064c0-.11-.073-.157-.22-.14-.14 0-.209.047-.209.14 0 .11.074.156.221.139.14 0 .209-.046.209-.14zm.756-.127c-.017-.093-.096-.131-.234-.114-.14.025-.2.088-.183.19.018.101.096.135.235.101.139-.034.2-.093.182-.177z&#34; fill-rule=&#34;nonzero&#34;&gt;&lt;/path&gt;
+                &lt;/svg&gt;
+                Available on GitHub
+            &lt;/a&gt;
+        &lt;/p&gt;</description>
+      <turbo:content>
+        <![CDATA[
+            <div class="row">
+    <div class="col">
+        <div class="text-center">
+            <img src="/work/images/editor-mix.png" alt="">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col col-6 col-4-md text-center">
+        <h3 class="text-xl text-center mt-8">Markdown</h3>
+        <img src="/work/images/markup.png" class="mx-auto my-2 rounded-md hoover" />
+    </div>
+    <div class="col col-6 col-4-md text-center">
+        <h3 class="text-xl text-center mt-8">Reading time</h3>
+        <img src="/work/images/reading-time.png" class="mx-auto my-2 rounded-md hoover" />
+    </div>
+    <div class="col col-6 col-4-md text-center">
+        <h3 class="text-xl text-center mt-8">Preview content</h3>
+        <img src="/work/images/preview-grid.png" class="mx-auto my-2 rounded-md hoover" />
+    </div>
+    <div class="col col-6 col-4-md text-center">
+        <h3 class="text-xl text-center mt-8">Export</h3>
+        <img src="/work/images/export-menu.png" class="mx-auto my-2 rounded-md hoover" />
+    </div>
+    <div class="col col-6 col-4-md text-center">
+        <h3 class="text-xl text-center mt-8">Spell checking</h3>
+        <img src="/work/images/spellcheck.png" class="mx-auto my-2 rounded-md hoover" />
+    </div>
+    <div class="col col-6 col-4-md text-center">
+        <h3 class="text-xl text-center mt-8">Color schemes</h3>
+        <img src="/work/images/schemes.png" class="mx-auto my-2 rounded-md hoover" />
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <ul class="list-disc pl-8 pb-4">
+            <li>Text search</li>
+            <li>Autosave</li>
+            <li>Drag-n-drop import local files</li>
+            <li>Export to files</li>
+            <li>Export to Medium.com</li>
+            <li>Export to Write.as</li>
+            <li>Different color schemes for editor</li>
+            <li>Document archiving</li>
+            <li>And of course, you can delete them permanently</li>
+        </ul>
+        <h3 class="text-4xl amatic">More to come!</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <h2 class="text-6xl amatic mb-10">Get Norka</h2>
+        <div class=" mb-4">
+            <div class="text-center items-center">
+                <a href="https://snapcraft.io/norka" rel="nofollow"
+                    onclick="ym(48108788,'reachGoal','snapstore')" class="mx-5"><img height="50"
+                        alt="Get it from the Snap Store"
+                        src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg"
+                        style="height: 50px;"></a>
+                <a href="https://flathub.org/apps/details/com.github.tenderowl.norka" rel="nofollow"
+                    onclick="ym(48108788,'reachGoal','flathub')" class="mx-5"><img height="50"
+                        alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-en.png"
+                        style="height: 50px;"></a>
+                <a href="https://appcenter.elementary.io/com.github.tenderowl.norka"
+                    onclick="ym(48108788,'reachGoal','appcenter')"><img
+                        src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter"
+                        style="height: 50px;"></a>
+            </div>
+        </div>
+        <p class="py-8">
+            If you feel enough power to contribute or fork feel free to do it. Source code
+            <a href="https://github.com/TenderOwl/Norka/" title="" class="px-1">
+            <svg width="20" height="19" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="inline">
+                    <path d="M10 0c1.814 0 3.487.435 5.02 1.306a9.827 9.827 0 0 1 3.639 3.542A9.33 9.33 0 0 1 20 9.734c0 2.121-.636 4.03-1.908 5.723a9.783 9.783 0 0 1-4.928 3.518c-.234.042-.408.012-.52-.09a.49.49 0 0 1-.17-.38l.006-.969c.005-.621.007-1.19.007-1.705 0-.82-.226-1.42-.677-1.8.495-.05.94-.126 1.335-.228a5.4 5.4 0 0 0 1.223-.494 3.62 3.62 0 0 0 1.055-.843c.282-.334.512-.777.69-1.33.178-.554.267-1.19.267-1.909a3.7 3.7 0 0 0-1.028-2.61c.32-.77.286-1.631-.105-2.586-.243-.076-.594-.03-1.054.14-.46.168-.86.354-1.198.557l-.495.304a9.478 9.478 0 0 0-2.5-.33c-.86 0-1.693.11-2.5.33a11.6 11.6 0 0 0-.553-.342c-.23-.135-.593-.298-1.088-.488-.494-.19-.863-.247-1.106-.171-.391.955-.426 1.816-.105 2.585A3.7 3.7 0 0 0 3.62 9.227c0 .719.089 1.352.267 1.902.178.549.406.993.683 1.33.278.339.627.622 1.048.85a5.4 5.4 0 0 0 1.224.494c.395.102.84.178 1.335.228-.338.305-.551.74-.638 1.306a2.631 2.631 0 0 1-.586.19 3.782 3.782 0 0 1-.742.063c-.287 0-.57-.09-.853-.272a2.256 2.256 0 0 1-.723-.792 2.068 2.068 0 0 0-.631-.66c-.256-.168-.471-.27-.645-.304l-.26-.038c-.182 0-.308.02-.378.057-.07.038-.09.087-.065.146.026.06.065.118.117.178.053.059.109.11.17.152l.09.063c.192.085.38.245.567.482.187.236.324.452.41.646l.13.292c.113.32.304.58.574.78.269.198.56.325.872.38.312.054.614.084.905.088.29.004.532-.01.723-.044l.299-.05c0 .32.002.694.007 1.12l.006.692a.49.49 0 0 1-.17.38c-.112.101-.286.13-.52.089a9.783 9.783 0 0 1-4.928-3.518C.636 13.763 0 11.855 0 9.734a9.33 9.33 0 0 1 1.341-4.886 9.827 9.827 0 0 1 3.64-3.542C6.512.436 8.185 0 10 0zM3.79 13.98c.025-.058-.005-.11-.092-.151-.087-.026-.143-.017-.17.025-.025.06.005.11.092.152.078.05.134.042.17-.025zm.403.432c.06-.043.052-.11-.026-.203-.087-.076-.157-.089-.209-.038-.06.042-.052.11.026.203.087.084.157.097.209.038zm.39.57c.078-.06.078-.14 0-.24-.07-.11-.143-.136-.221-.077-.078.042-.078.118 0 .228.078.11.152.14.221.089zm.547.532c.07-.067.052-.148-.052-.24-.104-.102-.19-.115-.26-.039-.078.068-.061.148.052.241.104.102.19.114.26.038zm.742.317c.026-.093-.03-.16-.169-.203-.13-.033-.213-.004-.247.09-.035.092.021.155.169.19.13.05.213.025.247-.077zm.82.064c0-.11-.073-.157-.22-.14-.14 0-.209.047-.209.14 0 .11.074.156.221.139.14 0 .209-.046.209-.14zm.756-.127c-.017-.093-.096-.131-.234-.114-.14.025-.2.088-.183.19.018.101.096.135.235.101.139-.034.2-.093.182-.177z" fill-rule="nonzero"></path>
+                </svg>
+                Available on GitHub
+            </a>
+        </p>
+    </div>
+</div>
+</div>
+
+        ]]>
+    </turbo:content>
+    </item>
+    
+    <item turbo="true">
+      <turbo:extendedHtml>true</turbo:extendedHtml>
+      <title>Server microframework for the Dart language</title>
+      <link>http://localhost:1313/work/laska/</link>
+      <pubDate>Fri, 18 Dec 2020 11:26:21 +0300</pubDate>
+      
+      <guid>http://localhost:1313/work/laska/</guid>
+      <description>&lt;p&gt;Laska is a server-side microframework for Dart.
+Currently, in development, not for production use.&lt;/p&gt;</description>
+      <turbo:content>
+        <![CDATA[
+            <p>Laska is a server-side microframework for Dart.
+Currently, in development, not for production use.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox" /> Dynamic routing with placeholders and wildcards</li>
+<li><input checked="" disabled="" type="checkbox" /> Concurrency via Isolates</li>
+<li><input checked="" disabled="" type="checkbox" /> Extensible Middleware support</li>
+<li><input disabled="" type="checkbox" /> Template rendering</li>
+<li><input disabled="" type="checkbox" /> Logging</li>
+</ul>
+<h2 id="how-to-use-it">How to use it</h2>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#ed9d13">&#39;dart:io&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#ed9d13">&#39;package:laska/laska.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">void</span> main() <span style="color:#6ab825;font-weight:bold">async</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// Create new Laska object with 2 [Isolate]
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">final</span> laska = Laska(isolateCount: <span style="color:#3677a9">2</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// Set global BasicAuth middleware 
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  laska.Use(BasicAuth(<span style="color:#ed9d13">&#39;laska&#39;</span>, <span style="color:#ed9d13">&#39;ermine&#39;</span>, realm: <span style="color:#ed9d13">&#39;Access to private zone&#39;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  laska.GET(<span style="color:#ed9d13">&#39;/users/:userId&#39;</span>, getUserById);
+</span></span><span style="display:flex;"><span>  laska.POST(<span style="color:#ed9d13">&#39;/users/&#39;</span>, createUser);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// Start server
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">await</span> run(laska);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">void</span> getUserById(Context context) <span style="color:#6ab825;font-weight:bold">async</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">await</span> context.HTML(<span style="color:#ed9d13">&#39;User: &lt;b&gt;</span><span style="color:#ed9d13">${</span>context.params[<span style="color:#ed9d13">&#39;userId&#39;</span>]<span style="color:#ed9d13">}</span><span style="color:#ed9d13">&lt;/b&gt;&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">void</span> createUser(Context context) <span style="color:#6ab825;font-weight:bold">async</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">await</span> context.JSON({<span style="color:#ed9d13">&#39;status&#39;</span>: <span style="color:#ed9d13">&#39;created&#39;</span>}, statusCode: HttpStatus.created);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+        ]]>
+    </turbo:content>
+    </item>
+    
+    <item turbo="true">
+      <turbo:extendedHtml>true</turbo:extendedHtml>
+      <title>Frog</title>
+      <link>http://localhost:1313/work/frog/</link>
+      <pubDate>Sun, 16 Aug 2020 20:26:21 +0300</pubDate>
+      
+      <guid>http://localhost:1313/work/frog/</guid>
+      <description>&lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col&#34;&gt;
+        &lt;div class=&#34;text-center&#34;&gt;
+            &lt;img src=&#34;http://localhost:1313/work/images/frog/frog-screenshot.png&#34; alt=&#34;Frog window&#34;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;extract-text-from-any-source&#34;&gt;Extract Text From Any source&lt;/h2&gt;
+&lt;p&gt;Quickly extract non-selectable text from anywhere: videos, PDFs, screencasts, webpages, photos, etc. It&amp;rsquo;s so simple and easy as taking a screenshot with a built-in snipping tool for Mac..&lt;/p&gt;</description>
+      <turbo:content>
+        <![CDATA[
+            <div class="row">
+    <div class="col">
+        <div class="text-center">
+            <img src="/work/images/frog/frog-screenshot.png" alt="Frog window">
+        </div>
+    </div>
+</div>
+<h2 id="extract-text-from-any-source">Extract Text From Any source</h2>
+<p>Quickly extract non-selectable text from anywhere: videos, PDFs, screencasts, webpages, photos, etc. It&rsquo;s so simple and easy as taking a screenshot with a built-in snipping tool for Mac..</p>
+<h2 id="see-it-in-action">See it in action</h2>
+<div class="row">
+    <div class="col">
+        <div class="text-center">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/lWpsT5uT6To" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <h2 class="text-6xl amatic mb-10">Get Frog</h2>
+        <div class=" mb-4">
+            <a href="https://appcenter.elementary.io/com.github.tenderowl.frog"
+                    onclick="ym(48108788,'reachGoal','appcenter')"><img
+                        src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter"
+                        style="height: 50px;"></a>
+        </div>
+        <p class="py-8">
+            If you feel enough power to contribute or fork feel free to do it. Source code
+            <a href="https://github.com/TenderOwl/Frog/" title="" class="px-1">
+            <svg width="20" height="19" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="inline">
+                    <path d="M10 0c1.814 0 3.487.435 5.02 1.306a9.827 9.827 0 0 1 3.639 3.542A9.33 9.33 0 0 1 20 9.734c0 2.121-.636 4.03-1.908 5.723a9.783 9.783 0 0 1-4.928 3.518c-.234.042-.408.012-.52-.09a.49.49 0 0 1-.17-.38l.006-.969c.005-.621.007-1.19.007-1.705 0-.82-.226-1.42-.677-1.8.495-.05.94-.126 1.335-.228a5.4 5.4 0 0 0 1.223-.494 3.62 3.62 0 0 0 1.055-.843c.282-.334.512-.777.69-1.33.178-.554.267-1.19.267-1.909a3.7 3.7 0 0 0-1.028-2.61c.32-.77.286-1.631-.105-2.586-.243-.076-.594-.03-1.054.14-.46.168-.86.354-1.198.557l-.495.304a9.478 9.478 0 0 0-2.5-.33c-.86 0-1.693.11-2.5.33a11.6 11.6 0 0 0-.553-.342c-.23-.135-.593-.298-1.088-.488-.494-.19-.863-.247-1.106-.171-.391.955-.426 1.816-.105 2.585A3.7 3.7 0 0 0 3.62 9.227c0 .719.089 1.352.267 1.902.178.549.406.993.683 1.33.278.339.627.622 1.048.85a5.4 5.4 0 0 0 1.224.494c.395.102.84.178 1.335.228-.338.305-.551.74-.638 1.306a2.631 2.631 0 0 1-.586.19 3.782 3.782 0 0 1-.742.063c-.287 0-.57-.09-.853-.272a2.256 2.256 0 0 1-.723-.792 2.068 2.068 0 0 0-.631-.66c-.256-.168-.471-.27-.645-.304l-.26-.038c-.182 0-.308.02-.378.057-.07.038-.09.087-.065.146.026.06.065.118.117.178.053.059.109.11.17.152l.09.063c.192.085.38.245.567.482.187.236.324.452.41.646l.13.292c.113.32.304.58.574.78.269.198.56.325.872.38.312.054.614.084.905.088.29.004.532-.01.723-.044l.299-.05c0 .32.002.694.007 1.12l.006.692a.49.49 0 0 1-.17.38c-.112.101-.286.13-.52.089a9.783 9.783 0 0 1-4.928-3.518C.636 13.763 0 11.855 0 9.734a9.33 9.33 0 0 1 1.341-4.886 9.827 9.827 0 0 1 3.64-3.542C6.512.436 8.185 0 10 0zM3.79 13.98c.025-.058-.005-.11-.092-.151-.087-.026-.143-.017-.17.025-.025.06.005.11.092.152.078.05.134.042.17-.025zm.403.432c.06-.043.052-.11-.026-.203-.087-.076-.157-.089-.209-.038-.06.042-.052.11.026.203.087.084.157.097.209.038zm.39.57c.078-.06.078-.14 0-.24-.07-.11-.143-.136-.221-.077-.078.042-.078.118 0 .228.078.11.152.14.221.089zm.547.532c.07-.067.052-.148-.052-.24-.104-.102-.19-.115-.26-.039-.078.068-.061.148.052.241.104.102.19.114.26.038zm.742.317c.026-.093-.03-.16-.169-.203-.13-.033-.213-.004-.247.09-.035.092.021.155.169.19.13.05.213.025.247-.077zm.82.064c0-.11-.073-.157-.22-.14-.14 0-.209.047-.209.14 0 .11.074.156.221.139.14 0 .209-.046.209-.14zm.756-.127c-.017-.093-.096-.131-.234-.114-.14.025-.2.088-.183.19.018.101.096.135.235.101.139-.034.2-.093.182-.177z" fill-rule="nonzero"></path>
+                </svg>
+                Available on GitHub
+            </a>
+        </p>
+    </div>
+</div>
+</div>
+        ]]>
+    </turbo:content>
+    </item>
+    
+  </channel>
+</rss>

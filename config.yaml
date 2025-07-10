@@ -4,10 +4,12 @@ title: TenderOwl
 enableRobotsTXT: true
 assetsDir: /assets
 
-author:
-  name: Andrey Maksimov
-copyright: This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
-  International License.
+params:
+  author:
+    name: Andrey Maksimov
+  copyright:
+    This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+    International License.
 
 languages:
   en:

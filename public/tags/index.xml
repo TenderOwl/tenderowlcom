@@ -1,1 +1,59 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on TenderOwl</title><link>http://example.org/tags/</link><description>Recent content in Tags on TenderOwl</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:yandex="http://news.yandex.ru"
+     xmlns:media="http://search.yahoo.com/mrss/"
+     xmlns:turbo="http://turbo.yandex.ru"
+     version="2.0">
+  <channel>
+    <title>Tags on TenderOwl</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on TenderOwl</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 04 Oct 2022 01:26:21 +0300</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item turbo="true">
+      <turbo:extendedHtml>true</turbo:extendedHtml>
+      <title>Dart, Framework, Server-Side, Programming</title>
+      <link>http://localhost:1313/tags/dart-framework-server-side-programming/</link>
+      <pubDate>Tue, 04 Oct 2022 01:26:21 +0300</pubDate>
+      
+      <guid>http://localhost:1313/tags/dart-framework-server-side-programming/</guid>
+      <description></description>
+      <turbo:content>
+        <![CDATA[
+            
+        ]]>
+    </turbo:content>
+    </item>
+    
+    <item turbo="true">
+      <turbo:extendedHtml>true</turbo:extendedHtml>
+      <title>Norka, Markdown, What&#39;s New</title>
+      <link>http://localhost:1313/tags/norka-markdown-whats-new/</link>
+      <pubDate>Mon, 21 Feb 2022 17:26:21 +0300</pubDate>
+      
+      <guid>http://localhost:1313/tags/norka-markdown-whats-new/</guid>
+      <description></description>
+      <turbo:content>
+        <![CDATA[
+            
+        ]]>
+    </turbo:content>
+    </item>
+    
+    <item turbo="true">
+      <turbo:extendedHtml>true</turbo:extendedHtml>
+      <title>Python, Gtk&#43;, Gtk-3, Websockets</title>
+      <link>http://localhost:1313/tags/python-gtk&#43;-gtk-3-websockets/</link>
+      <pubDate>Fri, 18 Dec 2020 11:26:21 +0300</pubDate>
+      
+      <guid>http://localhost:1313/tags/python-gtk&#43;-gtk-3-websockets/</guid>
+      <description></description>
+      <turbo:content>
+        <![CDATA[
+            
+        ]]>
+    </turbo:content>
+    </item>
+    
+  </channel>
+</rss>

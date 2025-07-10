@@ -1,29 +1,186 @@
-<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>TenderOwl</title><link rel=stylesheet href=https://unpkg.com/chota@latest><link rel=stylesheet href=http://example.org/styles/main.min.5dbd8644693df87d973bc62e6a1c5f3ff4c82ff5d373f390387630ead169f4a3.css integrity="sha256-Xb2GRGk9+H2XO8YuahxfP/TIL/XTc/OQOHYw6tFp9KM=" media=screen></head><body><main><header><div class=container><nav class=nav><div class=nav-left><a class=brand href=/>TenderOwl</a></div><div class=nav-right><a href=/posts>Posts</a>
-<a href=/work>Work</a></div></nav></div></header><div class=section-bar><div class=container><div class=row><div class=col><h1 class="text-6xl amatic mb-0">Server microframework for the Dart language</h1></div></div><div class=row><div class=col></div></div><p>Laska is a server-side microframework for Dart.
-Currently, in development, not for production use.</p><h2 id=features>Features</h2><ul><li><input checked disabled type=checkbox> Dynamic routing with placeholders and wildcards</li><li><input checked disabled type=checkbox> Concurrency via Isolates</li><li><input checked disabled type=checkbox> Extensible Middleware support</li><li><input disabled type=checkbox> Template rendering</li><li><input disabled type=checkbox> Logging</li></ul><h2 id=how-to-use-it>How to use it</h2><div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dart data-lang=dart><span style=color:#6ab825;font-weight:700>import</span> <span style=color:#ed9d13>&#39;dart:io&#39;</span>;
+<!doctype html>
+<html>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#305C73" />
+        <meta name="color-scheme" content="dark light" />
+        <meta name="yandex-verification" content="727300aab2ad0204" />
 
-<span style=color:#6ab825;font-weight:700>import</span> <span style=color:#ed9d13>&#39;package:laska/laska.dart&#39;</span>;
+        <title>TenderOwl</title>
 
-<span style=color:#6ab825;font-weight:700>void</span> main() <span style=color:#6ab825;font-weight:700>async</span> {
-  <span style=color:#999;font-style:italic>// Create new Laska object with 2 [Isolate]
-</span><span style=color:#999;font-style:italic></span>  <span style=color:#6ab825;font-weight:700>final</span> laska = Laska(isolateCount: <span style=color:#3677a9>2</span>);
+        
+<meta name="description" content="High performance, multithreaded, extensible Dart server framework.">
 
-  <span style=color:#999;font-style:italic>// Set global BasicAuth middleware 
-</span><span style=color:#999;font-style:italic></span>  laska.Use(BasicAuth(<span style=color:#ed9d13>&#39;laska&#39;</span>, <span style=color:#ed9d13>&#39;ermine&#39;</span>, realm: <span style=color:#ed9d13>&#39;Access to private zone&#39;</span>));
 
-  laska.GET(<span style=color:#ed9d13>&#39;/users/:userId&#39;</span>, getUserById);
-  laska.POST(<span style=color:#ed9d13>&#39;/users/&#39;</span>, createUser);
+        <link rel="stylesheet" href="https://unpkg.com/chota@latest" />
+        <link rel="manifest" href="/manifest.webmanifest" />
 
-  <span style=color:#999;font-style:italic>// Start server
-</span><span style=color:#999;font-style:italic></span>  <span style=color:#6ab825;font-weight:700>await</span> run(laska);
-}
+          
+        <link rel="stylesheet" href="http://localhost:1313/styles/main.css" media="screen" />
+         </head>
 
-<span style=color:#6ab825;font-weight:700>void</span> getUserById(Context context) <span style=color:#6ab825;font-weight:700>async</span> {
-  <span style=color:#6ab825;font-weight:700>await</span> context.HTML(<span style=color:#ed9d13>&#39;User: &lt;b&gt;</span><span style=color:#ed9d13>${</span>context.params[<span style=color:#ed9d13>&#39;userId&#39;</span>]<span style=color:#ed9d13>}</span><span style=color:#ed9d13>&lt;/b&gt;&#39;</span>);
-}
+    <body>
+        <main>
+            <header>
+<div class="container">
+    <nav class="nav">
+        <div class="nav-left">
+            <a class="brand" href="/">
+                TenderOwl
+            </a>
+        </div>
+        <div class="nav-right">
+            
+            
+            <a class="" href="/posts" title="">
+                Posts
+            </a>
+            
+            <a class="" href="/work" title="">
+                Work
+            </a>
+            
+        </div>
+    </nav>
 
-<span style=color:#6ab825;font-weight:700>void</span> createUser(Context context) <span style=color:#6ab825;font-weight:700>async</span> {
-  <span style=color:#6ab825;font-weight:700>await</span> context.JSON({<span style=color:#ed9d13>&#39;status&#39;</span>: <span style=color:#ed9d13>&#39;created&#39;</span>}, statusCode: HttpStatus.created);
-}
-</code></pre></div></div></div></main><footer class=section-bar><div class=container><div class="row justify-between"><div class="col-12 col-4-md"><h3>Contact</h3><p>I'm always interested in working on new projects. Hire me if you would like to work together.</p></div><div class="col-12 col-4-md"><h3>Subscribe</h3><p>Subscribe to our newsletter to stay updated on projects and whatever else we're working on.</p><form name=contact method=post data-netlify=true><input type=text name=subscribe_email id=subscribe_email placeholder="Enter your email address">
-<button type=submit>Subscribe</button></form></div></div><div class=row><div class=col><p>&copy; 2020. All Rights Reserved.</p></div></div></div></footer><script type=text/javascript>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js","ym");ym(48108788,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src=https://mc.yandex.ru/watch/48108788 style=position:absolute;left:-9999px alt></div></noscript></body></html>
+</div></header>
+
+            <div class="section-bar">
+                
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-6xl amatic mb-0">Server microframework for the Dart language</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            
+        </div>
+    </div>
+
+    <p>Laska is a server-side microframework for Dart.
+Currently, in development, not for production use.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox" /> Dynamic routing with placeholders and wildcards</li>
+<li><input checked="" disabled="" type="checkbox" /> Concurrency via Isolates</li>
+<li><input checked="" disabled="" type="checkbox" /> Extensible Middleware support</li>
+<li><input disabled="" type="checkbox" /> Template rendering</li>
+<li><input disabled="" type="checkbox" /> Logging</li>
+</ul>
+<h2 id="how-to-use-it">How to use it</h2>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#ed9d13">&#39;dart:io&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#ed9d13">&#39;package:laska/laska.dart&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">void</span> main() <span style="color:#6ab825;font-weight:bold">async</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// Create new Laska object with 2 [Isolate]
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">final</span> laska = Laska(isolateCount: <span style="color:#3677a9">2</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// Set global BasicAuth middleware 
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  laska.Use(BasicAuth(<span style="color:#ed9d13">&#39;laska&#39;</span>, <span style="color:#ed9d13">&#39;ermine&#39;</span>, realm: <span style="color:#ed9d13">&#39;Access to private zone&#39;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  laska.GET(<span style="color:#ed9d13">&#39;/users/:userId&#39;</span>, getUserById);
+</span></span><span style="display:flex;"><span>  laska.POST(<span style="color:#ed9d13">&#39;/users/&#39;</span>, createUser);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// Start server
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">await</span> run(laska);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">void</span> getUserById(Context context) <span style="color:#6ab825;font-weight:bold">async</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">await</span> context.HTML(<span style="color:#ed9d13">&#39;User: &lt;b&gt;</span><span style="color:#ed9d13">${</span>context.params[<span style="color:#ed9d13">&#39;userId&#39;</span>]<span style="color:#ed9d13">}</span><span style="color:#ed9d13">&lt;/b&gt;&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">void</span> createUser(Context context) <span style="color:#6ab825;font-weight:bold">async</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">await</span> context.JSON({<span style="color:#ed9d13">&#39;status&#39;</span>: <span style="color:#ed9d13">&#39;created&#39;</span>}, statusCode: HttpStatus.created);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>
+
+
+            </div>
+        </main>
+
+        <footer class="section-bar">
+             <div class="container">
+    <div class="row justify-between">
+        <div class="col col-5-md">
+            <h3>Contact</h3>
+            <p>I'm always interested in working on new projects. Hire me if you would like to work together.</p>
+            <p>
+                <a href="https://github.com/tenderOwl/" class="mr-2">
+                    <img src="/images/GitHub-Mark-64px.png" alt="TenderOwl GitHub Profile" height="32" width="32">
+                </a>
+                &nbsp;
+                <a href="https://dev.to/meamka">
+                    <img src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg" alt="Andrey M's DEV Profile" height="32" width="32">
+                </a>
+            </p>
+        </div>
+
+        <div class="col col-5-md">
+            <h3>Subscribe</h3>
+
+            <p>Subscribe to our newsletter to stay updated on projects and whatever else we're working on.</p>
+            <form name="contact" method="POST" data-netlify="true">
+                <p class="grouped">
+                    <input type="text" name="subscribe_email" id="subscribe_email"
+                        placeholder="Enter your email address">
+                    <button type="submit">Subscribe</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            <p>&copy; 2025. All Rights Reserved.</p>
+        </div>
+    </div>
+</div> 
+        </footer>
+
+        
+        <script type="text/javascript">
+            (function (m, e, t, r, i, k, a) {
+                m[i] =
+                    m[i] ||
+                    function () {
+                        (m[i].a = m[i].a || []).push(arguments);
+                    };
+                m[i].l = 1 * new Date();
+                ((k = e.createElement(t)),
+                    (a = e.getElementsByTagName(t)[0]),
+                    (k.async = 1),
+                    (k.src = r),
+                    a.parentNode.insertBefore(k, a));
+            })(
+                window,
+                document,
+                "script",
+                "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js",
+                "ym",
+            );
+            ym(48108788, "init", {
+                clickmap: true,
+                trackLinks: true,
+                accurateTrackBounce: true,
+            });
+        </script>
+        <noscript>
+            <div>
+                <img
+                    src="https://mc.yandex.ru/watch/48108788"
+                    style="position: absolute; left: -9999px"
+                    alt=""
+                />
+            </div>
+        </noscript>
+        
+    </body>
+</html>

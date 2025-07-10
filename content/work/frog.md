@@ -1,6 +1,6 @@
 ---
 title: "Frog"
-date: 2020-16-08T20:26:21+03:00
+date: 2020-08-16T20:26:21+03:00
 draft: false
 description: "Extract texte from anywhere with Frog for elementary OS"
 ---

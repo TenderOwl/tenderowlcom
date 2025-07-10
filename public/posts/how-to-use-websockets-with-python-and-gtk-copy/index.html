@@ -1,1 +1,396 @@
-q
+<!doctype html>
+<html>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#305C73" />
+        <meta name="color-scheme" content="dark light" />
+        <meta name="yandex-verification" content="727300aab2ad0204" />
+
+        <title>TenderOwl</title>
+
+         
+
+        <link rel="stylesheet" href="https://unpkg.com/chota@latest" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+
+          
+        <link rel="stylesheet" href="http://localhost:1313/styles/main.css" media="screen" />
+         </head>
+
+    <body>
+        <main>
+            <header>
+<div class="container">
+    <nav class="nav">
+        <div class="nav-left">
+            <a class="brand" href="/">
+                TenderOwl
+            </a>
+        </div>
+        <div class="nav-right">
+            
+            
+            <a class="" href="/posts" title="">
+                Posts
+            </a>
+            
+            <a class="" href="/work" title="">
+                Work
+            </a>
+            
+        </div>
+    </nav>
+
+</div></header>
+
+            <div class="section-bar">
+                
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>How to use WebSockets with Python and GTK&#43;</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            
+        </div>
+    </div>
+
+    <p>Hey there! I&rsquo;m here to present you an amazing trip to the native apps with WebSockets!</p>
+<p>In this current case we will be using these technologies:</p>
+<ul>
+<li>Python</li>
+<li>GTK+</li>
+<li>Libsoup</li>
+<li>Websocket messaging</li>
+</ul>
+<p>If you&rsquo;re wondering how to build a native GTK+ chat app, let&rsquo;s dive with me!</p>
+<h2 id="theory">Theory</h2>
+<p><a href="https://en.wikipedia.org/wiki/WebSocket">WebSockets</a> is a protocol designed to provide a consistent connection between the client and a server where both can send data to each other. It&rsquo;s like a wire over the Internet or a tube, distinct of regular HTTP, where the client only can send data to the server and it gets a response immediately.</p>
+<p>Benefits of this approach are quite obvious: the server can push the data to the client when it comes to server from another client or generated somewhere on the backend. And the client doesn&rsquo;t need to refresh the page or do something to fetch new data, it just comes to the client by itself.</p>
+<p>More information about WebSockets you can find on the <a href="http://websocket.org/aboutwebsocket.html">websocket.org</a>.</p>
+<p>What I want to show you in this article it is how to connect to a WebSocket server and send or receive data from it in a native GTK+ application.</p>
+<p>I will code my app in elementary OS using <a href="https://wiki.gnome.org/Apps/Builder">GNOME Builder</a>, but the same logic should work anywhere where <a href="https://gtk.org">GTK+</a> and <a href="https://libsoup.org">libsoup</a> are available and all code could be easily adapted even for macOS.</p>
+<h2 id="ui">UI</h2>
+<p>The app logic is quite simple yet representative. The UI will consist of two screens (<code>Gtk.Grid</code>) placed in <code>Gtk.Stack</code>. The first screen contains widgets required to connect to the server such as <code>Gtk.Entry</code> for server address, button to initiate a connection and a spinner to show the state.</p>
+<p><img src="https://dev-to-uploads.s3.amazonaws.com/i/6peeanzovpi8tbpp38rn.png" alt="First page"></p>
+<p>The second screen is more complex. Purpose of this is to enter the message, send it to the server and show the server&rsquo;s response in <code>Gtk.TextView</code>. Thus we need <code>Gtk.Grid</code> to place widgets. <code>Gtk.Entry</code> and <code>Gtk.Button</code> the same way we did it on the first page. And to display log we need <code>Gtk.TextView</code> placed within <code>Gtk.ScrolledWindow</code> in case there will be much more logs than the window can contain and the scrolling will be as much useful feature as it could :)</p>
+<p><img src="https://dev-to-uploads.s3.amazonaws.com/i/b9we4xc3cwi202qr5c86.png" alt="Second page"></p>
+<h3 id="connection-page">Connection page</h3>
+<p>Let&rsquo;s start building! Create a new project in Builder, as the language, we will use Python 3.6+.</p>
+<p><img src="https://dev-to-uploads.s3.amazonaws.com/i/6s87by1ljgku3jsp9h5p.png" alt="New project"></p>
+<p>IDE will generate a base app structure with all we need, and all we need is just two files: <code>window.ui</code> and <code>window.py</code>.</p>
+<p>Firstly, we need a correct UI for our app, so open <code>window.ui</code>. file and replace the &ldquo;hello world&rdquo; <code>Label</code> with <code>Gtk.Stack</code>. We will need two pages.</p>
+<p><img src="https://dev-to-uploads.s3.amazonaws.com/i/h289zyc16lxbjwx4o840.png" alt="Stack properties"></p>
+<p>Name the first screen &ldquo;connection&rdquo;, and place onto it <code>Gtk.Grid</code> with 3 rows and columns. In the central cell place <code>Gtk.Box</code> with 4 rows:</p>
+<ol>
+<li><code>Gtk.Label</code> with text &ldquo;Connection&rdquo;</li>
+<li><code>Gtk.Entry</code>. Set its id to &ldquo;host_entry&rdquo;</li>
+<li><code>Gtk.Button</code> with id &ldquo;connect_btn&rdquo;</li>
+<li><code>Gtk.Spinner</code>. Call it whatever you like, mine is just a &ldquo;spinner&rdquo; :)</li>
+</ol>
+<p>That&rsquo;s enough for the &ldquo;Connection&rdquo; page.</p>
+<h3 id="chat-page">Chat page</h3>
+<p>Moving further. The second screen is a bit more complex. Again, we need <code>Gtk.Grid</code> to put all the widgets we need. But for now, it will be a grid with just 2 rows and 2 columns.</p>
+<p>First row with two widgets in its own cells:</p>
+<ul>
+<li><code>Gtk.Entry</code> with id &ldquo;message_entry&rdquo;</li>
+<li><code>Gtk.Button</code> with id &ldquo;send_btn&rdquo;</li>
+</ul>
+<p>On the second row place <code>Gtk.ScrolledWindow</code>, no id required because we don&rsquo;t need to call its method. Inside this ScrolledWindow put a new <code>Gtk.TextView</code> widget. Set its id to &ldquo;log_view&rdquo;.</p>
+<p>To make it looks more convenient, set <em>width</em> = 2 in the container&rsquo;s props inside attribute editor for ScrolledWindow.</p>
+<p><img src="https://dev-to-uploads.s3.amazonaws.com/i/oiu7wgjgguqg4g0dn4ue.png" alt="ScrolledWindow packing"></p>
+<h2 id="logic">Logic</h2>
+<p>Ok, out UI is ready enough to build some logic for it, finally :)</p>
+<p>Open <code>window.py</code> and add class vars to connect with widgets from the <code>.ui</code> file.</p>
+<div class="highlight"><div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Stack with pages</span>
+</span></span><span style="display:flex;"><span>screens = Gtk.Template.Child()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Connection page widgets</span>
+</span></span><span style="display:flex;"><span>host_entry = Gtk.Template.Child()
+</span></span><span style="display:flex;"><span>connect_btn = Gtk.Template.Child()
+</span></span><span style="display:flex;"><span>disconnect_btn = Gtk.Template.Child()
+</span></span><span style="display:flex;"><span>spinner = Gtk.Template.Child()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Chat page widgets</span>
+</span></span><span style="display:flex;"><span>send_btn = Gtk.Template.Child()
+</span></span><span style="display:flex;"><span>message_entry = Gtk.Template.Child()
+</span></span><span style="display:flex;"><span>log_view = Gtk.Template.Child()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Declare some class-vars</span>
+</span></span><span style="display:flex;"><span>self.session = <span style="color:#6ab825;font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>self.connection = <span style="color:#6ab825;font-weight:bold">None</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Well, now we are able to call methods of these widgets. But also, we have to handle its signals. Let&rsquo;s connect &ldquo;connect_btn&rdquo;:</p>
+<div class="highlight"><div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">19
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">def</span> __init__(self, **kwargs):
+</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Some app logic</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    self.connect_btn.connect(<span style="color:#ed9d13">&#39;clicked&#39;</span>, self.on_connect_clicked)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">on_connect_clicked</span>(self, widget):
+</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Check if there is a text inside the host_entry</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># and grab focus if its empty</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">if</span> <span style="color:#6ab825;font-weight:bold">not</span> self.host_entry.get_text():
+</span></span><span style="display:flex;"><span>        self.host_entry.grab_focus()
+</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">return</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Show user we are trying to connect</span>
+</span></span><span style="display:flex;"><span>    self.spinner.start()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Init libsoup Session, create message and start connection</span>
+</span></span><span style="display:flex;"><span>    self.session = Soup.Session()
+</span></span><span style="display:flex;"><span>    msg = Soup.Message.new(<span style="color:#ed9d13">&#34;GET&#34;</span>, self.host_entry.get_text())
+</span></span><span style="display:flex;"><span>    self.session.websocket_connect_async(msg, <span style="color:#6ab825;font-weight:bold">None</span>, <span style="color:#6ab825;font-weight:bold">None</span>, <span style="color:#6ab825;font-weight:bold">None</span>, self.on_connection)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The code above is quite straightforward:</p>
+<ul>
+<li>Get the server address</li>
+<li>Create new <a href="https://lazka.github.io/pgi-docs/#Soup-2.4/classes/Session.html"><code>Session</code></a></li>
+<li>Init the connection with <a href="https://lazka.github.io/pgi-docs/#Soup-2.4/classes/Session.html%23Soup.Session.websocket_connect_async"><code>websocket_connect_async</code></a></li>
+</ul>
+<p>As a callback for connection function, we put <code>on_connection</code> method, which takes the result of this operation and finish the process.</p>
+<div class="highlight"><div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">on_connection</span>(self, session, result):
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># Finish connection process</span>
+</span></span><span style="display:flex;"><span>        self.connection = session.websocket_connect_finish(result)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># If we here, the connection went correctly</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># Connect `message` handler to the connection</span>
+</span></span><span style="display:flex;"><span>        self.connection.connect(<span style="color:#ed9d13">&#39;message&#39;</span>, self.on_message)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># Show to user all is OK and switch to the Chat page</span>
+</span></span><span style="display:flex;"><span>        self.screens.set_visible_child_name(<span style="color:#ed9d13">&#39;chat&#39;</span>)
+</span></span><span style="display:flex;"><span>        self.disconnect_btn.set_visible(<span style="color:#6ab825;font-weight:bold">True</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">except</span> <span style="color:#bbb">Exception</span> <span style="color:#6ab825;font-weight:bold">as</span> e:
+</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># In case something goes wrong just print an exception</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#24909d">print</span>(e)
+</span></span><span style="display:flex;"><span>        self.session = <span style="color:#6ab825;font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">finally</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># Don&#39;t forget to show a user that process is finished.</span>
+</span></span><span style="display:flex;"><span>        self.spinner.stop()
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We are almost done! All we need to do more is to handle click event from the &ldquo;send_btn&rdquo; and display messages in the &ldquo;log_view&rdquo;.</p>
+<div class="highlight"><div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">on_message</span>(self, connection, msg_type, message):
+</span></span><span style="display:flex;"><span>    msg = <span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;&lt;b&gt;RECEIVED:&lt;/b&gt; </span><span style="color:#ed9d13">{</span>message.get_data().decode()<span style="color:#ed9d13">}</span><span style="color:#ed9d13">\n</span><span style="color:#ed9d13">&#39;</span>
+</span></span><span style="display:flex;"><span>    self.buffer.insert_markup(self.buffer.get_start_iter(),
+</span></span><span style="display:flex;"><span>                              msg,
+</span></span><span style="display:flex;"><span>                              <span style="color:#24909d">len</span>(msg))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Could it be more simple than that? :wink: Just to display a message in a more readable way we add some Pango markup and use <a href="https://lazka.github.io/pgi-docs/#Gtk-3.0/classes/TextBuffer.html%23Gtk.TextBuffer.insert_markup"><code>insert_markup</code></a> method of <code>Gtk.TextBuffer</code> to&hellip; insert markup!</p>
+<p>Last, but not least required thing is a handler for &ldquo;send_btn&rdquo; signal.</p>
+<div class="highlight"><div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">on_send_clicked</span>(self, widget):
+</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Get the message from the Entry</span>
+</span></span><span style="display:flex;"><span>    msg = self.message_entry.get_text()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># If there is no message - grab focus.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">if</span> <span style="color:#6ab825;font-weight:bold">not</span> msg:
+</span></span><span style="display:flex;"><span>        self.message_entry.grab_focus()
+</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">return</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Send a text to the server.</span>
+</span></span><span style="display:flex;"><span>    self.connection.send_text(msg)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>For our simple case, all we need is just the <a href="https://lazka.github.io/pgi-docs/#Soup-2.4/classes/WebsocketConnection.html%23Soup.WebsocketConnection.send_text"><code>send_text</code></a> method. But libsoup could do a lot of different stuff, such as <a href="https://lazka.github.io/pgi-docs/#Soup-2.4/classes/WebsocketConnection.html%23Soup.WebsocketConnection.send_binary"><code>send_binary</code></a> or emit a signal if something <a href="https://lazka.github.io/pgi-docs/#Soup-2.4/classes/WebsocketConnection.html%23Soup.WebsocketConnection.signals.error">goes wrong</a>.</p>
+<p><img src="https://dev-to-uploads.s3.amazonaws.com/i/6th5fr8cow67bmb8nh3z.gif" alt="Spacebeam"></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Simple yet descriptive example of how to start building your GTK+ app with WebSockets inside. Maybe you will create a new chat app?</p>
+<p>Stay tuned if you want to read more! Or go to the docs from the Links section.</p>
+<p>Anyway, good luck!</p>
+<h2 id="links">Links</h2>
+<p>Source code:
+<a href="https://github.com/amka/pygobject-gtk-websocket-app">https://github.com/amka/pygobject-gtk-websocket-app</a></p>
+<p>Docs:</p>
+<ul>
+<li><a href="https://websocket.org/">https://websocket.org/</a></li>
+<li><a href="https://lazka.github.io/pgi-docs/#Gtk-3.0">https://lazka.github.io/pgi-docs/#Gtk-3.0</a></li>
+<li><a href="https://lazka.github.io/pgi-docs/#Soup-2.4">https://lazka.github.io/pgi-docs/#Soup-2.4</a></li>
+</ul>
+</div>
+
+
+            </div>
+        </main>
+
+        <footer class="section-bar">
+             <div class="container">
+    <div class="row justify-between">
+        <div class="col col-5-md">
+            <h3>Contact</h3>
+            <p>I'm always interested in working on new projects. Hire me if you would like to work together.</p>
+            <p>
+                <a href="https://github.com/tenderOwl/" class="mr-2">
+                    <img src="/images/GitHub-Mark-64px.png" alt="TenderOwl GitHub Profile" height="32" width="32">
+                </a>
+                &nbsp;
+                <a href="https://dev.to/meamka">
+                    <img src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg" alt="Andrey M's DEV Profile" height="32" width="32">
+                </a>
+            </p>
+        </div>
+
+        <div class="col col-5-md">
+            <h3>Subscribe</h3>
+
+            <p>Subscribe to our newsletter to stay updated on projects and whatever else we're working on.</p>
+            <form name="contact" method="POST" data-netlify="true">
+                <p class="grouped">
+                    <input type="text" name="subscribe_email" id="subscribe_email"
+                        placeholder="Enter your email address">
+                    <button type="submit">Subscribe</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            <p>&copy; 2025. All Rights Reserved.</p>
+        </div>
+    </div>
+</div> 
+        </footer>
+
+        
+        <script type="text/javascript">
+            (function (m, e, t, r, i, k, a) {
+                m[i] =
+                    m[i] ||
+                    function () {
+                        (m[i].a = m[i].a || []).push(arguments);
+                    };
+                m[i].l = 1 * new Date();
+                ((k = e.createElement(t)),
+                    (a = e.getElementsByTagName(t)[0]),
+                    (k.async = 1),
+                    (k.src = r),
+                    a.parentNode.insertBefore(k, a));
+            })(
+                window,
+                document,
+                "script",
+                "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js",
+                "ym",
+            );
+            ym(48108788, "init", {
+                clickmap: true,
+                trackLinks: true,
+                accurateTrackBounce: true,
+            });
+        </script>
+        <noscript>
+            <div>
+                <img
+                    src="https://mc.yandex.ru/watch/48108788"
+                    style="position: absolute; left: -9999px"
+                    alt=""
+                />
+            </div>
+        </noscript>
+        
+    </body>
+</html>
