@@ -9,7 +9,65 @@
     <description>Recent content in Posts on TenderOwl</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 04 Oct 2022 01:26:21 +0300</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Jul 2025 17:55:38 +0300</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item turbo="true">
+      <turbo:extendedHtml>true</turbo:extendedHtml>
+      <title>Attemp to build Norka 2</title>
+      <link>http://localhost:1313/posts/attempt-to-build-norka-2/</link>
+      <pubDate>Thu, 10 Jul 2025 17:55:38 +0300</pubDate>
+      
+      <guid>http://localhost:1313/posts/attempt-to-build-norka-2/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;For more than a year now, I have been periodically returning to trying to rethink my note-taking application, &lt;a href=&#34;https://flathub.org/apps/com.github.tenderowl.norka&#34;&gt;Norka&lt;/a&gt;, to update the interface, add modern features, and finally add synchronization with the cloud.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve had several attempts to use Rust to add speed and reliability to the application. I use C# (&lt;a href=&#34;https://gircore.github.io/&#34;&gt;Gir.Core&lt;/a&gt;) for the same reasons and because I love this language. But unfortunately, in the end I returned to Python, because it and &lt;a href=&#34;https://pygobject.gnome.org/&#34;&gt;PyGObject&lt;/a&gt; provide the necessary development speed and support a lot of libraries that I need for my work. The Python development ecosystem for GTK looks the most mature and complete.&lt;/p&gt;</description>
+      <turbo:content>
+        <![CDATA[
+            <h2 id="introduction">Introduction</h2>
+<p>For more than a year now, I have been periodically returning to trying to rethink my note-taking application, <a href="https://flathub.org/apps/com.github.tenderowl.norka">Norka</a>, to update the interface, add modern features, and finally add synchronization with the cloud.</p>
+<p>I&rsquo;ve had several attempts to use Rust to add speed and reliability to the application. I use C# (<a href="https://gircore.github.io/">Gir.Core</a>) for the same reasons and because I love this language. But unfortunately, in the end I returned to Python, because it and <a href="https://pygobject.gnome.org/">PyGObject</a> provide the necessary development speed and support a lot of libraries that I need for my work. The Python development ecosystem for GTK looks the most mature and complete.</p>
+<p>So, after a year of experimentation and prototyping, studying analogs and my application requirements, I started another attempt to implement Norka 2.</p>
+<h2 id="inspiration">Inspiration</h2>
+<p>I have been working with macOS for more than 10 years and I believe that it is for this OS that the most beautiful and user-friendly applications have been created from the point of view of UX. Let&rsquo;s leave beauty out of the box, as it&rsquo;s a matter of taste, and turn to user experience.</p>
+<p>I have tried working with many applications, especially considering those that have received awards for their design - Craft, Ulysses, Bear, Evernote, IA Writer, etc. I also looked at various online services such as Microsoft Loop, Confluence (and why not?) and others . At some point in time, I caught myself thinking that 2 services had become the most convenient for me: craft.do as a desktop application and web service, and Microsoft Loop as a web service. It was decided to assemble the functionality of the new version of Norka from them, namely:</p>
+<ul>
+<li>Workspaces</li>
+<li>A tree structure where each page can have nested pages.</li>
+<li>Customization of the design of pages and spaces: icons and covers help with work and just make work more fun.</li>
+<li>Instead of Markdown, use rich formatting in the document itself, like office software.</li>
+<li>The ability to publish pages, share them with other users, or make them publicly available to everyone.</li>
+<li>Sync with the cloud.</li>
+<li>Encryption of spaces and pages with password access for published pages.</li>
+<li>Integration with LLM both locally and externally (whether <a href="https://ollama.com/">Ollama</a> or OpenAI)</li>
+<li>The ability to create tasks, as implemented in Craft.</li>
+<li>Advanced search capabilities, calendar linking, etc.</li>
+</ul>
+<p>Of course, this is not the final list, and it will be updated. However, it&rsquo;s a great set to start with :)</p>
+<p>By the way, you can follow the updates on my <a href="https://x.com/meamka">Twitter</a> or on the project&rsquo;s <a href="https://github.com/TenderOwl/NorkaXT">Github</a>.</p>
+<h2 id="workspaces">Workspaces</h2>
+<p>The first thing to do was to sort out the workspaces. The task they are designed to solve is to group pages by topic, project, or otherwise. The user can decide for himself, the main thing is to give him the opportunity. And at the same time, make it possible to add an icon, cover, and control functionality. So we get something like this:</p>
+<p><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/w67etd46k6xuvkohbebf.png" alt="Workspace creation dialog"></p>
+<p>The user can select an emoji icon and a cover from the preset images. However, in the future I plan to add integration with online services such as <a href="https://www.pexels.com/">Pexels</a> or <a href="https://unsplash.com/">Unsplash</a>.</p>
+<p>Workspaces contain pages that are deleted when the space is deleted. So be careful 🙂</p>
+<h2 id="pages">Pages</h2>
+<p>If workspaces are complementary functionality, then creating and editing text is the main one. Therefore, it will require the most work on itself, but let&rsquo;s see what has already been implemented.</p>
+<h3 id="editing">Editing</h3>
+<p>Surprisingly, the fact is that pages can already be created and their contents edited. At the same time, syntax highlighting is now being used, which migrated from the first version of Norka - Markdown markup. In addition to this, I started implementing work with formatting tags, without having to use a markup language. My experience suggests that this is a more convenient option, especially if you combine it with Markdown - use markup during typing as shortcuts for tags. For example, if a user types</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># The Awesome Title
+</span></span></code></pre></div><p>, then this text will be automatically converted to a title, and the # sign at the beginning of the line will be removed like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>The Awesome Title
+</span></span></code></pre></div><p>This should work for titles, links, images, and other markup elements.</p>
+<p>And if the ability to insert tags was not particularly difficult, then the issue of saving and loading required analysis and study, since the standard functionality of Gtk libraries allows you to save text, but there is no formatting in it. After trying out various data serialization options, I came to the decision not to mix content and formatting, and these two parts of the same whole should be stored separately from each other. This is about how documents are stored <code>.docx</code> and <code>.odt</code>.</p>
+<h3 id="nesting">Nesting</h3>
+<p>You can also nest pages inside each other and move them between workspaces. This can be done either by simply dragging the mouse or using the context menu.</p>
+<p>The nesting is not limited, but in the future this parameter may be revised after analyzing the work on large volumes and deep nesting of pages.</p>
+<h2 id="to-be-continued">To be continued</h2>
+<p>A start has been made, but there is still a lot of work ahead, both in adding new functionality and debugging interfaces and performance. It&rsquo;s too early to talk about release plans, those who suffer can download the source codes and build the application themselves, everything is available on GitHub.</p>
+<p><strong>See you!</strong></p>
+
+        ]]>
+    </turbo:content>
+    </item>
+    
     <item turbo="true">
       <turbo:extendedHtml>true</turbo:extendedHtml>
       <title>Server-side Dart</title>
@@ -151,64 +209,6 @@
 </ul>
 <h2 id="the-end">The end</h2>
 <p>I&rsquo;d love to see more server-side Dart projects and hope you do too. If you think so it would be very encouraging if you star the project on <a href="https://github.com/TenderOwl/laska">GitHub</a> and like it on Dev.to.</p>
-        ]]>
-    </turbo:content>
-    </item>
-    
-    <item turbo="true">
-      <turbo:extendedHtml>true</turbo:extendedHtml>
-      <title>Attemp to build Norka 2</title>
-      <link>http://localhost:1313/posts/attempt-to-build-norka-2/</link>
-      <pubDate>Mon, 21 Feb 2022 17:26:21 +0300</pubDate>
-      
-      <guid>http://localhost:1313/posts/attempt-to-build-norka-2/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;For more than a year now, I have been periodically returning to trying to rethink my note-taking application, &lt;a href=&#34;https://flathub.org/apps/com.github.tenderowl.norka&#34;&gt;Norka&lt;/a&gt;, to update the interface, add modern features, and finally add synchronization with the cloud.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;ve had several attempts to use Rust to add speed and reliability to the application. I use C# (&lt;a href=&#34;https://gircore.github.io/&#34;&gt;Gir.Core&lt;/a&gt;) for the same reasons and because I love this language. But unfortunately, in the end I returned to Python, because it and &lt;a href=&#34;https://pygobject.gnome.org/&#34;&gt;PyGObject&lt;/a&gt; provide the necessary development speed and support a lot of libraries that I need for my work. The Python development ecosystem for GTK looks the most mature and complete.&lt;/p&gt;</description>
-      <turbo:content>
-        <![CDATA[
-            <h2 id="introduction">Introduction</h2>
-<p>For more than a year now, I have been periodically returning to trying to rethink my note-taking application, <a href="https://flathub.org/apps/com.github.tenderowl.norka">Norka</a>, to update the interface, add modern features, and finally add synchronization with the cloud.</p>
-<p>I&rsquo;ve had several attempts to use Rust to add speed and reliability to the application. I use C# (<a href="https://gircore.github.io/">Gir.Core</a>) for the same reasons and because I love this language. But unfortunately, in the end I returned to Python, because it and <a href="https://pygobject.gnome.org/">PyGObject</a> provide the necessary development speed and support a lot of libraries that I need for my work. The Python development ecosystem for GTK looks the most mature and complete.</p>
-<p>So, after a year of experimentation and prototyping, studying analogs and my application requirements, I started another attempt to implement Norka 2.</p>
-<h2 id="inspiration">Inspiration</h2>
-<p>I have been working with macOS for more than 10 years and I believe that it is for this OS that the most beautiful and user-friendly applications have been created from the point of view of UX. Let&rsquo;s leave beauty out of the box, as it&rsquo;s a matter of taste, and turn to user experience.</p>
-<p>I have tried working with many applications, especially considering those that have received awards for their design - Craft, Ulysses, Bear, Evernote, IA Writer, etc. I also looked at various online services such as Microsoft Loop, Confluence (and why not?) and others . At some point in time, I caught myself thinking that 2 services had become the most convenient for me: craft.do as a desktop application and web service, and Microsoft Loop as a web service. It was decided to assemble the functionality of the new version of Norka from them, namely:</p>
-<ul>
-<li>Workspaces</li>
-<li>A tree structure where each page can have nested pages.</li>
-<li>Customization of the design of pages and spaces: icons and covers help with work and just make work more fun.</li>
-<li>Instead of Markdown, use rich formatting in the document itself, like office software.</li>
-<li>The ability to publish pages, share them with other users, or make them publicly available to everyone.</li>
-<li>Sync with the cloud.</li>
-<li>Encryption of spaces and pages with password access for published pages.</li>
-<li>Integration with LLM both locally and externally (whether <a href="https://ollama.com/">Ollama</a> or OpenAI)</li>
-<li>The ability to create tasks, as implemented in Craft.</li>
-<li>Advanced search capabilities, calendar linking, etc.</li>
-</ul>
-<p>Of course, this is not the final list, and it will be updated. However, it&rsquo;s a great set to start with :)</p>
-<p>By the way, you can follow the updates on my <a href="https://x.com/meamka">Twitter</a> or on the project&rsquo;s <a href="https://github.com/TenderOwl/NorkaXT">Github</a>.</p>
-<h2 id="workspaces">Workspaces</h2>
-<p>The first thing to do was to sort out the workspaces. The task they are designed to solve is to group pages by topic, project, or otherwise. The user can decide for himself, the main thing is to give him the opportunity. And at the same time, make it possible to add an icon, cover, and control functionality. So we get something like this:</p>
-<p><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/w67etd46k6xuvkohbebf.png" alt="Workspace creation dialog"></p>
-<p>The user can select an emoji icon and a cover from the preset images. However, in the future I plan to add integration with online services such as <a href="https://www.pexels.com/">Pexels</a> or <a href="https://unsplash.com/">Unsplash</a>.</p>
-<p>Workspaces contain pages that are deleted when the space is deleted. So be careful 🙂</p>
-<h2 id="pages">Pages</h2>
-<p>If workspaces are complementary functionality, then creating and editing text is the main one. Therefore, it will require the most work on itself, but let&rsquo;s see what has already been implemented.</p>
-<h3 id="editing">Editing</h3>
-<p>Surprisingly, the fact is that pages can already be created and their contents edited. At the same time, syntax highlighting is now being used, which migrated from the first version of Norka - Markdown markup. In addition to this, I started implementing work with formatting tags, without having to use a markup language. My experience suggests that this is a more convenient option, especially if you combine it with Markdown - use markup during typing as shortcuts for tags. For example, if a user types</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># The Awesome Title
-</span></span></code></pre></div><p>, then this text will be automatically converted to a title, and the # sign at the beginning of the line will be removed like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>The Awesome Title
-</span></span></code></pre></div><p>This should work for titles, links, images, and other markup elements.</p>
-<p>And if the ability to insert tags was not particularly difficult, then the issue of saving and loading required analysis and study, since the standard functionality of Gtk libraries allows you to save text, but there is no formatting in it. After trying out various data serialization options, I came to the decision not to mix content and formatting, and these two parts of the same whole should be stored separately from each other. This is about how documents are stored <code>.docx</code> and <code>.odt</code>.</p>
-<h3 id="nesting">Nesting</h3>
-<p>You can also nest pages inside each other and move them between workspaces. This can be done either by simply dragging the mouse or using the context menu.</p>
-<p>The nesting is not limited, but in the future this parameter may be revised after analyzing the work on large volumes and deep nesting of pages.</p>
-<h2 id="to-be-continued">To be continued</h2>
-<p>A start has been made, but there is still a lot of work ahead, both in adding new functionality and debugging interfaces and performance. It&rsquo;s too early to talk about release plans, those who suffer can download the source codes and build the application themselves, everything is available on GitHub.</p>
-<p><strong>See you!</strong></p>
-
         ]]>
     </turbo:content>
     </item>
