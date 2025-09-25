@@ -55,9 +55,10 @@ markup:
     hl_Lines: ""
     lineAnchors: ""
     lineNumbersInTable: true
-    noClasses: true
-    style: native
+    noClasses: false
+    style: autumn
     tabWidth: 4
+    wrapperClass: rounded
   tableOfContents:
     endLevel: 3
     ordered: false

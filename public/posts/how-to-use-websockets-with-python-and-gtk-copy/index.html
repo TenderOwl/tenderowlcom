@@ -107,89 +107,89 @@
 <h2 id="logic">Logic</h2>
 <p>Ok, out UI is ready enough to build some logic for it, finally :)</p>
 <p>Open <code>window.py</code> and add class vars to connect with widgets from the <code>.ui</code> file.</p>
-<div class="highlight"><div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">17
+<div class="rounded"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Stack with pages</span>
-</span></span><span style="display:flex;"><span>screens = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Connection page widgets</span>
-</span></span><span style="display:flex;"><span>host_entry = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>connect_btn = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>disconnect_btn = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>spinner = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Chat page widgets</span>
-</span></span><span style="display:flex;"><span>send_btn = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>message_entry = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>log_view = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Declare some class-vars</span>
-</span></span><span style="display:flex;"><span>self.session = <span style="color:#6ab825;font-weight:bold">None</span>
-</span></span><span style="display:flex;"><span>self.connection = <span style="color:#6ab825;font-weight:bold">None</span>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python3" data-lang="python3"><span class="line"><span class="cl"><span class="c1"># Stack with pages</span>
+</span></span><span class="line"><span class="cl"><span class="n">screens</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Connection page widgets</span>
+</span></span><span class="line"><span class="cl"><span class="n">host_entry</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">connect_btn</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">disconnect_btn</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">spinner</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Chat page widgets</span>
+</span></span><span class="line"><span class="cl"><span class="n">send_btn</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">message_entry</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">log_view</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Declare some class-vars</span>
+</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="kc">None</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Well, now we are able to call methods of these widgets. But also, we have to handle its signals. Let&rsquo;s connect &ldquo;connect_btn&rdquo;:</p>
-<div class="highlight"><div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">19
+<div class="rounded"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">def</span> __init__(self, **kwargs):
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Some app logic</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    self.connect_btn.connect(<span style="color:#ed9d13">&#39;clicked&#39;</span>, self.on_connect_clicked)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">on_connect_clicked</span>(self, widget):
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Check if there is a text inside the host_entry</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># and grab focus if its empty</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">if</span> <span style="color:#6ab825;font-weight:bold">not</span> self.host_entry.get_text():
-</span></span><span style="display:flex;"><span>        self.host_entry.grab_focus()
-</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">return</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Show user we are trying to connect</span>
-</span></span><span style="display:flex;"><span>    self.spinner.start()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Init libsoup Session, create message and start connection</span>
-</span></span><span style="display:flex;"><span>    self.session = Soup.Session()
-</span></span><span style="display:flex;"><span>    msg = Soup.Message.new(<span style="color:#ed9d13">&#34;GET&#34;</span>, self.host_entry.get_text())
-</span></span><span style="display:flex;"><span>    self.session.websocket_connect_async(msg, <span style="color:#6ab825;font-weight:bold">None</span>, <span style="color:#6ab825;font-weight:bold">None</span>, <span style="color:#6ab825;font-weight:bold">None</span>, self.on_connection)
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Some app logic</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">connect_btn</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;clicked&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_connect_clicked</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_connect_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Check if there is a text inside the host_entry</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># and grab focus if its empty</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_entry</span><span class="o">.</span><span class="n">get_text</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">host_entry</span><span class="o">.</span><span class="n">grab_focus</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Show user we are trying to connect</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">spinner</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Init libsoup Session, create message and start connection</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">Soup</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">msg</span> <span class="o">=</span> <span class="n">Soup</span><span class="o">.</span><span class="n">Message</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&#34;GET&#34;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_entry</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">websocket_connect_async</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_connection</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>The code above is quite straightforward:</p>
@@ -199,99 +199,99 @@
 <li>Init the connection with <a href="https://lazka.github.io/pgi-docs/#Soup-2.4/classes/Session.html%23Soup.Session.websocket_connect_async"><code>websocket_connect_async</code></a></li>
 </ul>
 <p>As a callback for connection function, we put <code>on_connection</code> method, which takes the result of this operation and finish the process.</p>
-<div class="highlight"><div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">21
+<div class="rounded"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">on_connection</span>(self, session, result):
-</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">try</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># Finish connection process</span>
-</span></span><span style="display:flex;"><span>        self.connection = session.websocket_connect_finish(result)
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># If we here, the connection went correctly</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># Connect `message` handler to the connection</span>
-</span></span><span style="display:flex;"><span>        self.connection.connect(<span style="color:#ed9d13">&#39;message&#39;</span>, self.on_message)
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># Show to user all is OK and switch to the Chat page</span>
-</span></span><span style="display:flex;"><span>        self.screens.set_visible_child_name(<span style="color:#ed9d13">&#39;chat&#39;</span>)
-</span></span><span style="display:flex;"><span>        self.disconnect_btn.set_visible(<span style="color:#6ab825;font-weight:bold">True</span>)
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">except</span> <span style="color:#bbb">Exception</span> <span style="color:#6ab825;font-weight:bold">as</span> e:
-</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># In case something goes wrong just print an exception</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#24909d">print</span>(e)
-</span></span><span style="display:flex;"><span>        self.session = <span style="color:#6ab825;font-weight:bold">None</span>
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">finally</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># Don&#39;t forget to show a user that process is finished.</span>
-</span></span><span style="display:flex;"><span>        self.spinner.stop()
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Finish connection process</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">websocket_connect_finish</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># If we here, the connection went correctly</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Connect `message` handler to the connection</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Show to user all is OK and switch to the Chat page</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">screens</span><span class="o">.</span><span class="n">set_visible_child_name</span><span class="p">(</span><span class="s1">&#39;chat&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">disconnect_btn</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># In case something goes wrong just print an exception</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">finally</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Don&#39;t forget to show a user that process is finished.</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">spinner</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>We are almost done! All we need to do more is to handle click event from the &ldquo;send_btn&rdquo; and display messages in the &ldquo;log_view&rdquo;.</p>
-<div class="highlight"><div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">5
+<div class="rounded"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">on_message</span>(self, connection, msg_type, message):
-</span></span><span style="display:flex;"><span>    msg = <span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;&lt;b&gt;RECEIVED:&lt;/b&gt; </span><span style="color:#ed9d13">{</span>message.get_data().decode()<span style="color:#ed9d13">}</span><span style="color:#ed9d13">\n</span><span style="color:#ed9d13">&#39;</span>
-</span></span><span style="display:flex;"><span>    self.buffer.insert_markup(self.buffer.get_start_iter(),
-</span></span><span style="display:flex;"><span>                              msg,
-</span></span><span style="display:flex;"><span>                              <span style="color:#24909d">len</span>(msg))
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">msg_type</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;RECEIVED:&lt;/b&gt; </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">insert_markup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">get_start_iter</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">                              <span class="n">msg</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                              <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Could it be more simple than that? :wink: Just to display a message in a more readable way we add some Pango markup and use <a href="https://lazka.github.io/pgi-docs/#Gtk-3.0/classes/TextBuffer.html%23Gtk.TextBuffer.insert_markup"><code>insert_markup</code></a> method of <code>Gtk.TextBuffer</code> to&hellip; insert markup!</p>
 <p>Last, but not least required thing is a handler for &ldquo;send_btn&rdquo; signal.</p>
-<div class="highlight"><div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">11
+<div class="rounded"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">on_send_clicked</span>(self, widget):
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Get the message from the Entry</span>
-</span></span><span style="display:flex;"><span>    msg = self.message_entry.get_text()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># If there is no message - grab focus.</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">if</span> <span style="color:#6ab825;font-weight:bold">not</span> msg:
-</span></span><span style="display:flex;"><span>        self.message_entry.grab_focus()
-</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">return</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Send a text to the server.</span>
-</span></span><span style="display:flex;"><span>    self.connection.send_text(msg)
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_send_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Get the message from the Entry</span>
+</span></span><span class="line"><span class="cl">    <span class="n">msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">message_entry</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># If there is no message - grab focus.</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">msg</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">message_entry</span><span class="o">.</span><span class="n">grab_focus</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Send a text to the server.</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">send_text</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>For our simple case, all we need is just the <a href="https://lazka.github.io/pgi-docs/#Soup-2.4/classes/WebsocketConnection.html%23Soup.WebsocketConnection.send_text"><code>send_text</code></a> method. But libsoup could do a lot of different stuff, such as <a href="https://lazka.github.io/pgi-docs/#Soup-2.4/classes/WebsocketConnection.html%23Soup.WebsocketConnection.send_binary"><code>send_binary</code></a> or emit a signal if something <a href="https://lazka.github.io/pgi-docs/#Soup-2.4/classes/WebsocketConnection.html%23Soup.WebsocketConnection.signals.error">goes wrong</a>.</p>

@@ -9,7 +9,22 @@
     <description>Recent content in Tags on TenderOwl</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 10 Jul 2025 17:55:38 +0300</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Sep 2025 11:50:38 +0200</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item turbo="true">
+      <turbo:extendedHtml>true</turbo:extendedHtml>
+      <title>.Net, Gnome, Flatpak, Template, Gircore, Dotnet</title>
+      <link>http://localhost:1313/tags/.net-gnome-flatpak-template-gircore-dotnet/</link>
+      <pubDate>Thu, 25 Sep 2025 11:50:38 +0200</pubDate>
+      
+      <guid>http://localhost:1313/tags/.net-gnome-flatpak-template-gircore-dotnet/</guid>
+      <description></description>
+      <turbo:content>
+        <![CDATA[
+            
+        ]]>
+    </turbo:content>
+    </item>
+    
     <item turbo="true">
       <turbo:extendedHtml>true</turbo:extendedHtml>
       <title>Norka, Markdown, What&#39;s New</title>

@@ -9,7 +9,126 @@
     <description>Recent content on TenderOwl</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 10 Jul 2025 17:55:38 +0300</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Sep 2025 11:50:38 +0200</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item turbo="true">
+      <turbo:extendedHtml>true</turbo:extendedHtml>
+      <title>A Template for Building .NET GNOME Applications with Flatpak</title>
+      <link>http://localhost:1313/posts/gircore-gnome-flatpak-template/</link>
+      <pubDate>Thu, 25 Sep 2025 11:50:38 +0200</pubDate>
+      
+      <guid>http://localhost:1313/posts/gircore-gnome-flatpak-template/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Developing native applications for the GNOME platform using .NET has become significantly easier. I&amp;rsquo;m excited to introduce &lt;strong&gt;TenderOwl.GirCoreTemplate.CSharp&lt;/strong&gt;, a project template that automates creating applications using &lt;strong&gt;Gir.Core&lt;/strong&gt; bindings, the modern &lt;strong&gt;Blueprint&lt;/strong&gt; interface markup language, and &lt;strong&gt;Flatpak&lt;/strong&gt; packaging.&lt;/p&gt;
+&lt;p&gt;My journey with C# began back in 2003, and when the Gir.Core project emerged—a binding generator for GTK4 and GObject-based libraries—I couldn&amp;rsquo;t resist getting involved. Over time, I developed the idea to create a template that would streamline getting started with these technologies while enabling the use of familiar tools like GNOME Builder. This template is the result of that work.&lt;/p&gt;</description>
+      <turbo:content>
+        <![CDATA[
+            <h2 id="introduction">Introduction</h2>
+<p>Developing native applications for the GNOME platform using .NET has become significantly easier. I&rsquo;m excited to introduce <strong>TenderOwl.GirCoreTemplate.CSharp</strong>, a project template that automates creating applications using <strong>Gir.Core</strong> bindings, the modern <strong>Blueprint</strong> interface markup language, and <strong>Flatpak</strong> packaging.</p>
+<p>My journey with C# began back in 2003, and when the Gir.Core project emerged—a binding generator for GTK4 and GObject-based libraries—I couldn&rsquo;t resist getting involved. Over time, I developed the idea to create a template that would streamline getting started with these technologies while enabling the use of familiar tools like GNOME Builder. This template is the result of that work.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before getting started, ensure you have the following software installed:</p>
+<ul>
+<li><a href="https://dotnet.microsoft.com/"><strong>.NET SDK 9.0</strong></a> or newer</li>
+<li><a href="https://gnome.pages.gitlab.gnome.org/blueprint-compiler/"><strong>Blueprint Compiler</strong></a></li>
+<li><a href="https://flatpak.org/"><strong>Flatpak</strong></a> with GNOME runtime (for building and testing)</li>
+<li><a href="https://apps.gnome.org/Builder/"><strong>GNOME Builder</strong></a> (recommended for development)</li>
+</ul>
+<h2 id="template-installation-and-project-creation">Template Installation and Project Creation</h2>
+<h3 id="installing-the-template">Installing the Template</h3>
+<p>The template is available via NuGet and can be installed with a single command:</p>
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">dotnet new install TenderOwl.GirCoreTemplate.CSharp
+</span></span></code></pre></div><h3 id="creating-a-new-project">Creating a New Project</h3>
+<p>Create a project from the template by specifying a unique application ID (replace <code>YOUR_APP_ID</code> with your identifier, such as <code>io.github.yourname.MyApp</code>):</p>
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">dotnet new gnome-gircore --app-id YOUR_APP_ID -n MyGnomeApp -o MyGnomeApp
+</span></span></code></pre></div><blockquote>
+<p><strong>Important:</strong> The application ID must be unique and follow the <a href="https://docs.flatpak.org/en/latest/conventions.html#application-ids">Reverse DNS standard</a>.</p>
+</blockquote>
+<h2 id="project-structure">Project Structure</h2>
+<p>After creating the project, you&rsquo;ll see the following file structure:</p>
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-zed" data-lang="zed"><span class="line"><span class="cl"><span class="n">your</span><span class="o">-</span><span class="nn">application/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">├──</span><span class="w"> </span><span class="nn">MyApp/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">Program</span><span class="p">.</span><span class="n">cs</span><span class="w">                     </span><span class="err">#</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="n">point</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">Constants</span><span class="p">.</span><span class="n">cs</span><span class="w">                   </span><span class="err">#</span><span class="w"> </span><span class="n">Constants</span><span class="w"> </span><span class="n">including</span><span class="w"> </span><span class="n">application</span><span class="w"> </span><span class="n">ID</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="nn">ui/</span><span class="w">                            </span><span class="err">#</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">classes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">│</span><span class="w">       </span><span class="err">└──</span><span class="w"> </span><span class="n">MainWindow</span><span class="p">.</span><span class="n">cs</span><span class="w">              </span><span class="err">#</span><span class="w"> </span><span class="n">Main</span><span class="w"> </span><span class="n">application</span><span class="w"> </span><span class="n">window</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">├──</span><span class="w"> </span><span class="nn">data/</span><span class="w">                              </span><span class="err">#</span><span class="w"> </span><span class="n">Data</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">resource</span><span class="w"> </span><span class="n">files</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nn">icons/</span><span class="w">                         </span><span class="err">#</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="n">icons</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nn">ui/</span><span class="w">                            </span><span class="err">#</span><span class="w"> </span><span class="n">Blueprint</span><span class="w"> </span><span class="n">files</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">MainWindow</span><span class="p">.</span><span class="n">blp</span><span class="w">             </span><span class="err">#</span><span class="w"> </span><span class="n">Main</span><span class="w"> </span><span class="n">window</span><span class="w"> </span><span class="n">layout</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">__APP_ID__</span><span class="p">.</span><span class="n">desktop</span><span class="w">             </span><span class="err">#</span><span class="w"> </span><span class="n">Desktop</span><span class="w"> </span><span class="n">integration</span><span class="w"> </span><span class="n">file</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">__APP_ID__</span><span class="p">.</span><span class="n">appdata</span><span class="p">.</span><span class="n">xml</span><span class="w">         </span><span class="err">#</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="n">metadata</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">__APP_ID__</span><span class="p">.</span><span class="n">gresource</span><span class="p">.</span><span class="n">xml</span><span class="w">       </span><span class="err">#</span><span class="w"> </span><span class="n">Resource</span><span class="w"> </span><span class="kt">definition</span><span class="w"> </span><span class="n">file</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">__APP_ID__</span><span class="p">.</span><span class="n">gschema</span><span class="p">.</span><span class="n">xml</span><span class="w">         </span><span class="err">#</span><span class="w"> </span><span class="n">GSettings</span><span class="w"> </span><span class="n">schema</span><span class="w"> </span><span class="kt">definition</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">├──</span><span class="w"> </span><span class="n">build</span><span class="o">-</span><span class="nn">aux/</span><span class="w">                         </span><span class="err">#</span><span class="w"> </span><span class="n">Build</span><span class="w"> </span><span class="n">auxiliary</span><span class="w"> </span><span class="n">files</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">__APP_ID__</span><span class="p">.</span><span class="n">yaml</span><span class="w">                </span><span class="err">#</span><span class="w"> </span><span class="n">Flatpak</span><span class="w"> </span><span class="n">manifest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">nuget</span><span class="o">-</span><span class="n">sources</span><span class="p">.</span><span class="n">json</span><span class="w">             </span><span class="err">#</span><span class="w"> </span><span class="n">NuGet</span><span class="w"> </span><span class="n">sources</span><span class="w"> </span><span class="n">configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">└──</span><span class="w"> </span><span class="nn">build/</span><span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="n">Generated</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="p">(</span><span class="n">created</span><span class="w"> </span><span class="n">during</span><span class="w"> </span><span class="n">build</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></div><h3 id="key-project-files">Key Project Files</h3>
+<ul>
+<li><strong><code>Constants.cs</code></strong> — Contains application constants including <code>APP_ID</code>. When changing the ID, update it in all files using <code>__APP_ID__</code>.</li>
+<li><strong><code>build-aux/__APP_ID__.yaml</code></strong> — Flatpak manifest defining dependencies, permissions, and build stages.</li>
+<li><strong><code>data/ui/MainWindow.blp</code></strong> and <strong><code>ui/MainWindow.cs</code></strong> — UI layout and application logic pairing.</li>
+<li><strong><code>__APP_ID__.appdata.xml</code></strong> — Metadata for GNOME Software Center.</li>
+<li><strong><code>__APP_ID__.gschema.xml</code></strong> — Application settings schema.</li>
+<li><strong><code>__APP_ID__.gresource.xml</code></strong> — Application resource definition.</li>
+</ul>
+<h2 id="building-and-running">Building and Running</h2>
+<h3 id="development-with-gnome-builder-recommended">Development with GNOME Builder (Recommended)</h3>
+<ol>
+<li>Open the project folder in GNOME Builder</li>
+<li>The IDE will automatically recognize the project</li>
+<li>Click &ldquo;Run&rdquo; to build and launch the application in the required environment</li>
+</ol>
+<h3 id="building-with-flatpak-builder">Building with flatpak-builder</h3>
+<p>To build and install the application manually, run these commands from the project root directory (replacing <code>__APP_ID__</code> with your identifier):</p>
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">flatpak-builder --user --install build-dir build-aux/__APP_ID__.yaml --force-clean
+</span></span></code></pre></div><p>After installation, the application will appear in your menu and can be launched with:</p>
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">flatpak run YOUR_APP_ID
+</span></span></code></pre></div><blockquote>
+<p><strong>Important:</strong> Running via <code>dotnet run</code> won&rsquo;t work as the application depends on GNOME-specific features (desktop files, GSettings, resources, etc.).</p>
+</blockquote>
+<h2 id="build-process">Build Process</h2>
+<p>The build process is detailed in the application&rsquo;s Flatpak manifest (<code>build-aux/__APP_ID__.yaml</code>):</p>
+<ol>
+<li>Blueprint Compiler installation</li>
+<li>.NET SDK and runtime setup</li>
+<li>Application build including:
+<ul>
+<li>C# code compilation</li>
+<li>Blueprint file compilation into UI resources</li>
+<li>Resource compilation using <code>gnome-compile-resources</code></li>
+<li>Application metadata copying</li>
+<li>GSettings schema compilation</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Any additional files required for your application must be manually added to the Flatpak manifest.</p>
+</blockquote>
+<h2 id="working-with-blueprint-files">Working with Blueprint Files</h2>
+<p>Blueprint is a modern replacement for traditional XML/.ui files for describing interfaces in GNOME. When working with them:</p>
+<ul>
+<li>Files must be located in the <code>data/ui/</code> directory</li>
+<li>Use the <code>.blp</code> extension—files with other extensions are ignored by the build system</li>
+<li>For example, <code>MainWindow.blp</code> will be processed, while <code>MainWindow.foo</code> will be ignored</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<p>After creating your project, you can:</p>
+<ol>
+<li><strong>Modify the interface</strong> — Edit files in the <code>data/ui/</code> directory. Find official Blueprint documentation on the <a href="https://jwestman.pages.gitlab.gnome.org/blueprint-compiler/">project website</a>.</li>
+<li><strong>Add logic</strong> — Work with code in the <code>ui/</code> directory. Study the <a href="https://github.com/gircore/gir.core">Gir.Core documentation</a> to understand available GTK APIs.</li>
+<li><strong>Configure the manifest</strong> — Open <code>build-aux/__APP_ID__.yaml</code> to add your application&rsquo;s dependencies (e.g., for network or database functionality).</li>
+<li><strong>Add icons</strong> — Place your icons in the <code>data/icons/</code> directory in appropriate sizes.</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>The TenderOwl.GirCoreTemplate.CSharp template significantly simplifies starting .NET application development for GNOME by handling all the complexity of initial build and deployment configuration. It allows you to focus on creating application functionality rather than tool configuration.</p>
+<p>If you have questions or suggestions for improving the template, I&rsquo;d be happy to discuss them in the <a href="https://github.com/gircore/gir.core/issues/938">corresponding issue</a> of the Gir.Core repository.</p>
+<p>Happy coding!</p>
+
+        ]]>
+    </turbo:content>
+    </item>
+    
     <item turbo="true">
       <turbo:extendedHtml>true</turbo:extendedHtml>
       <title>Attemp to build Norka 2</title>
@@ -52,9 +171,9 @@
 <p>If workspaces are complementary functionality, then creating and editing text is the main one. Therefore, it will require the most work on itself, but let&rsquo;s see what has already been implemented.</p>
 <h3 id="editing">Editing</h3>
 <p>Surprisingly, the fact is that pages can already be created and their contents edited. At the same time, syntax highlighting is now being used, which migrated from the first version of Norka - Markdown markup. In addition to this, I started implementing work with formatting tags, without having to use a markup language. My experience suggests that this is a more convenient option, especially if you combine it with Markdown - use markup during typing as shortcuts for tags. For example, if a user types</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># The Awesome Title
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># The Awesome Title
 </span></span></code></pre></div><p>, then this text will be automatically converted to a title, and the # sign at the beginning of the line will be removed like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>The Awesome Title
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">The Awesome Title
 </span></span></code></pre></div><p>This should work for titles, links, images, and other markup elements.</p>
 <p>And if the ability to insert tags was not particularly difficult, then the issue of saving and loading required analysis and study, since the standard functionality of Gtk libraries allows you to save text, but there is no formatting in it. After trying out various data serialization options, I came to the decision not to mix content and formatting, and these two parts of the same whole should be stored separately from each other. This is about how documents are stored <code>.docx</code> and <code>.odt</code>.</p>
 <h3 id="nesting">Nesting</h3>
@@ -95,16 +214,16 @@
 <p>I did experiment with Isolates and multiprocessing, but finally, I decided it would require the developers to work with additional limitations. It is not the way I want to use any kind of software, so why does anyone should do it? Programming should be easy and fun therefore there is no kind of parallelism in Laska.</p>
 <h2 id="lets-build-something">Let&rsquo;s build something</h2>
 <p>There is a trivial way to present programming languages and frameworks called &lsquo;Hello world&rsquo;. Let&rsquo;s be trivial!</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#ed9d13">&#39;package:laska/laska.dart&#39;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">void</span> main() <span style="color:#6ab825;font-weight:bold">async</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">final</span> laska = Laska();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  laska.GET(<span style="color:#ed9d13">&#39;/hello/:name&#39;</span>,
-</span></span><span style="display:flex;"><span>      (context) <span style="color:#6ab825;font-weight:bold">async</span> =&gt; <span style="color:#6ab825;font-weight:bold">await</span> context.Text(<span style="color:#ed9d13">&#34;Hello </span><span style="color:#ed9d13">${</span>context.param(<span style="color:#ed9d13">&#39;name&#39;</span>)<span style="color:#ed9d13">}</span><span style="color:#ed9d13">!&#34;</span>));
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">await</span> run(laska);
-</span></span><span style="display:flex;"><span>}
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:laska/laska.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="kd">async</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">final</span> <span class="n">laska</span> <span class="o">=</span> <span class="n">Laska</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">laska</span><span class="p">.</span><span class="n">GET</span><span class="p">(</span><span class="s1">&#39;/hello/:name&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="kd">async</span> <span class="o">=&gt;</span> <span class="kd">await</span> <span class="n">context</span><span class="p">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&#34;Hello </span><span class="si">${</span><span class="n">context</span><span class="p">.</span><span class="n">param</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">!&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kd">await</span> <span class="n">run</span><span class="p">(</span><span class="n">laska</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>It&rsquo;s easy to understand what&rsquo;s going on here:</p>
 <ul>
 <li>initialize a Laska object</li>
@@ -115,82 +234,82 @@
 <p>That&rsquo;s it, an asynchronous server is up and running on http://localhost:3789.</p>
 <h2 id="more-realistic-example">More realistic example</h2>
 <p>Surely, &lsquo;Hello world&rsquo; is not a kind of real-world application someone will deploy to production. The more realistic would be to build a server that logs user requests to the stdout and has routes that require authorization.</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#ed9d13">&#39;package:laska/laska.dart&#39;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic">// Custom middleware that checks user access.
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span><span style="color:#6ab825;font-weight:bold">class</span> <span style="color:#447fcf;text-decoration:underline">Acl</span> <span style="color:#6ab825;font-weight:bold">implements</span> Middleware {
-</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">final</span> allowedRoles;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  Acl(<span style="color:#6ab825;font-weight:bold">this</span>.allowedRoles);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a61717;background-color:#e3d2d2">@</span>override
-</span></span><span style="display:flex;"><span>  Future&lt;Function&gt; execute(Function next, Context context) <span style="color:#6ab825;font-weight:bold">async</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">return</span> (Context c) {
-</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">// In this case it&#39;s simple check:
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#999;font-style:italic">// Does the request contains `role` header with `admin` value.
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#6ab825;font-weight:bold">final</span> role = context.request.headers.value(<span style="color:#ed9d13">&#39;role&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">// If the header&#39;s `role` is not in `allowedRoles`, reject the request.
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#6ab825;font-weight:bold">if</span> (!allowedRoles.contains(role)) {
-</span></span><span style="display:flex;"><span>        context.Text(<span style="color:#ed9d13">&#39;Role </span><span style="color:#ed9d13">$</span>role<span style="color:#ed9d13"> is not allowed.&#39;</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#6ab825;font-weight:bold">null</span>;
-</span></span><span style="display:flex;"><span>      }
-</span></span><span style="display:flex;"><span>      print(<span style="color:#ed9d13">&#39;Role </span><span style="color:#ed9d13">$</span>role<span style="color:#ed9d13"> is allowed.&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">// Don&#39;t forget to call the handler.
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#6ab825;font-weight:bold">return</span> next(c);
-</span></span><span style="display:flex;"><span>    };
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic">// Custom middleware that prints request path and given prefix.
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span><span style="color:#6ab825;font-weight:bold">class</span> <span style="color:#447fcf;text-decoration:underline">Logger</span> <span style="color:#6ab825;font-weight:bold">implements</span> Middleware {
-</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">String</span> prefix;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  Logger(<span style="color:#6ab825;font-weight:bold">this</span>.prefix);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a61717;background-color:#e3d2d2">@</span>override
-</span></span><span style="display:flex;"><span>  Future&lt;Function&gt; execute(Function next, Context context) <span style="color:#6ab825;font-weight:bold">async</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">return</span> (Context c) {
-</span></span><span style="display:flex;"><span>      print(<span style="color:#ed9d13">&#39;</span><span style="color:#ed9d13">$</span>prefix<span style="color:#ed9d13">: Path: </span><span style="color:#ed9d13">${</span>context.path<span style="color:#ed9d13">}</span><span style="color:#ed9d13">&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">// Don&#39;t forget to call the handler.
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#6ab825;font-weight:bold">return</span> next(c);
-</span></span><span style="display:flex;"><span>    };
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">void</span> main() <span style="color:#6ab825;font-weight:bold">async</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">final</span> laska = Laska();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">final</span> acl_middleware = Acl([<span style="color:#ed9d13">&#39;admin&#39;</span>]);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// Add global middleware
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  laska.Use(Logger(<span style="color:#ed9d13">&#39;global&#39;</span>));
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// Create handler with per-route middlewares: logger and acl
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  laska.GET(<span style="color:#ed9d13">&#39;/secret&#39;</span>, secretHandler,
-</span></span><span style="display:flex;"><span>      middlewares: {Logger(<span style="color:#ed9d13">&#39;route&#39;</span>), acl_middleware});
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// Add route handler, only global middleware will apply
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  laska.GET(<span style="color:#ed9d13">&#39;/users&#39;</span>, getUsers);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// Add route with acl middleware, but only for the POST method.
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  laska.POST(<span style="color:#ed9d13">&#39;/users&#39;</span>, getUsers, middlewares: {acl_middleware});
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">await</span> run(laska);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">void</span> secretHandler(Context context) <span style="color:#6ab825;font-weight:bold">async</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">await</span> context.Text(<span style="color:#ed9d13">&#39;You have access to secret path!&#39;</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">void</span> getUsers(Context context) <span style="color:#6ab825;font-weight:bold">async</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">await</span> context.JSON([
-</span></span><span style="display:flex;"><span>    {<span style="color:#ed9d13">&#39;id&#39;</span>: <span style="color:#3677a9">1</span>, <span style="color:#ed9d13">&#39;name&#39;</span>: <span style="color:#ed9d13">&#39;Make something useful&#39;</span>, <span style="color:#ed9d13">&#39;status&#39;</span>: <span style="color:#3677a9">0</span>},
-</span></span><span style="display:flex;"><span>    {<span style="color:#ed9d13">&#39;id&#39;</span>: <span style="color:#3677a9">2</span>, <span style="color:#ed9d13">&#39;name&#39;</span>: <span style="color:#ed9d13">&#39;Make new website&#39;</span>, <span style="color:#ed9d13">&#39;status&#39;</span>: <span style="color:#3677a9">1</span>},
-</span></span><span style="display:flex;"><span>  ]);
-</span></span><span style="display:flex;"><span>}
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:laska/laska.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Custom middleware that checks user access.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">class</span> <span class="nc">Acl</span> <span class="kd">implements</span> <span class="n">Middleware</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">final</span> <span class="n">allowedRoles</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">Acl</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">allowedRoles</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Future</span><span class="o">&lt;</span><span class="n">Function</span><span class="o">&gt;</span> <span class="n">execute</span><span class="p">(</span><span class="n">Function</span> <span class="n">next</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="kd">async</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">Context</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// In this case it&#39;s simple check:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="c1">// Does the request contains `role` header with `admin` value.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="kd">final</span> <span class="n">role</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">headers</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="s1">&#39;role&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="c1">// If the header&#39;s `role` is not in `allowedRoles`, reject the request.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">allowedRoles</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">role</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">context</span><span class="p">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Role </span><span class="si">$</span><span class="n">role</span><span class="s1"> is not allowed.&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">print</span><span class="p">(</span><span class="s1">&#39;Role </span><span class="si">$</span><span class="n">role</span><span class="s1"> is allowed.&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="c1">// Don&#39;t forget to call the handler.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">return</span> <span class="n">next</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Custom middleware that prints request path and given prefix.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">class</span> <span class="nc">Logger</span> <span class="kd">implements</span> <span class="n">Middleware</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">String</span> <span class="n">prefix</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">Logger</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">prefix</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Future</span><span class="o">&lt;</span><span class="n">Function</span><span class="o">&gt;</span> <span class="n">execute</span><span class="p">(</span><span class="n">Function</span> <span class="n">next</span><span class="p">,</span> <span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="kd">async</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">Context</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">$</span><span class="n">prefix</span><span class="s1">: Path: </span><span class="si">${</span><span class="n">context</span><span class="p">.</span><span class="n">path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="c1">// Don&#39;t forget to call the handler.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">return</span> <span class="n">next</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="kd">async</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">final</span> <span class="n">laska</span> <span class="o">=</span> <span class="n">Laska</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kd">final</span> <span class="n">acl_middleware</span> <span class="o">=</span> <span class="n">Acl</span><span class="p">([</span><span class="s1">&#39;admin&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// Add global middleware
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">laska</span><span class="p">.</span><span class="n">Use</span><span class="p">(</span><span class="n">Logger</span><span class="p">(</span><span class="s1">&#39;global&#39;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// Create handler with per-route middlewares: logger and acl
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">laska</span><span class="p">.</span><span class="n">GET</span><span class="p">(</span><span class="s1">&#39;/secret&#39;</span><span class="p">,</span> <span class="n">secretHandler</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">middlewares:</span> <span class="p">{</span><span class="n">Logger</span><span class="p">(</span><span class="s1">&#39;route&#39;</span><span class="p">),</span> <span class="n">acl_middleware</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// Add route handler, only global middleware will apply
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">laska</span><span class="p">.</span><span class="n">GET</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="n">getUsers</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// Add route with acl middleware, but only for the POST method.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">laska</span><span class="p">.</span><span class="n">POST</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="n">getUsers</span><span class="p">,</span> <span class="nl">middlewares:</span> <span class="p">{</span><span class="n">acl_middleware</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kd">await</span> <span class="n">run</span><span class="p">(</span><span class="n">laska</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">secretHandler</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="kd">async</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">await</span> <span class="n">context</span><span class="p">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;You have access to secret path!&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">getUsers</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="kd">async</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">await</span> <span class="n">context</span><span class="p">.</span><span class="n">JSON</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="m">1</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Make something useful&#39;</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="m">0</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="m">2</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Make new website&#39;</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="m">1</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>I hope this code is self-explanatory but you can ask me  any questions  in comments :)</p>
 <h2 id="roadmap">Roadmap</h2>
 <p>🅿️ - P is for planned.</p>
@@ -280,55 +399,55 @@
 <h3 id="get-the-right-command">Get the right command</h3>
 <p>To write a good contract we need to find out what command does the job we need. In some cases, it could be easily extracted from <code>--help</code> info or <code>man</code> pages. Luckily Telegram command-line switches are fully described in the GitHub Wiki: <a href="https://github.com/telegramdesktop/tdesktop/wiki/Command-Line-Switches">https://github.com/telegramdesktop/tdesktop/wiki/Command-Line-Switches</a>. <code>-sendpath &lt;file&gt;</code> - the desired switch.</p>
 <p>One part is done, let&rsquo;s figure out the second one. To run the application with a command-line switch installed via Flatpak we have to call <code>flatpak run</code> command. Thus our command will look like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>flatpak run org.telegram.desktop -sendpath %f
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">flatpak run org.telegram.desktop -sendpath %f
 </span></span></code></pre></div><p>This is already enough to make a contract!</p>
 <h3 id="contract">Contract</h3>
 <p>Every contract should be placed inside <code>~/.local/share/contractor</code> if we talking about a specific user or inside <code>/usr/share/contractor</code> for the system-wide availability.</p>
 <p>Simple <code>.contract</code> file example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">[Contractor Entry]</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">Name</span>=<span style="color:#ed9d13">Mount</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">MimeType</span>=<span style="color:#ed9d13">application/x-cd-image;application/x-raw-disk-image</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">Exec</span>=<span style="color:#ed9d13">gnome-disk-image-mounter %f</span>
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[Contractor Entry]</span>
+</span></span><span class="line"><span class="cl"><span class="na">Name</span><span class="o">=</span><span class="s">Mount</span>
+</span></span><span class="line"><span class="cl"><span class="na">MimeType</span><span class="o">=</span><span class="s">application/x-cd-image;application/x-raw-disk-image</span>
+</span></span><span class="line"><span class="cl"><span class="na">Exec</span><span class="o">=</span><span class="s">gnome-disk-image-mounter %f</span>
 </span></span></code></pre></div><p>This example shows how to make a command that will mount disk images to the filesystem. We need something different.</p>
 <p>Create <code>telegram-share.contract</code> file and open it in <a href="https://github.com/elementary/code">Code</a> or your text editor of choice.
 Change <code>Name</code> to <code>Share via Telegram</code> and <code>Exec</code> field to a command we discovered earlier. If English is not your primary language you can add localized <code>Name</code> by adding <code>Name[language code]</code> option. For example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#bbb">Name[ru]</span>=<span style="color:#ed9d13">Поделиться в Telegram</span>
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="na">Name[ru]</span><span class="o">=</span><span class="s">Поделиться в Telegram</span>
 </span></span></code></pre></div><p>Last but not least we have to set what mime-types has to activate the Share command. Of course, it doesn&rsquo;t mean to be only disk images
 and here is the special type - <code>!inode</code> - which means any file you select no matter archive it or pdf.</p>
 <p>Let&rsquo;s see what we&rsquo;ve got!</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">[Contractor Entry]</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">Name</span>=<span style="color:#ed9d13">Share via Telegram</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">Name[ru]</span>=<span style="color:#ed9d13">Поделиться в Telegram</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">Icon</span>=<span style="color:#ed9d13">telegram</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">MimeType</span>=<span style="color:#ed9d13">!inode;</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">Exec</span>=<span style="color:#ed9d13">flatpak run org.telegram.desktop -sendpath %f</span>
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[Contractor Entry]</span>
+</span></span><span class="line"><span class="cl"><span class="na">Name</span><span class="o">=</span><span class="s">Share via Telegram</span>
+</span></span><span class="line"><span class="cl"><span class="na">Name[ru]</span><span class="o">=</span><span class="s">Поделиться в Telegram</span>
+</span></span><span class="line"><span class="cl"><span class="na">Icon</span><span class="o">=</span><span class="s">telegram</span>
+</span></span><span class="line"><span class="cl"><span class="na">MimeType</span><span class="o">=</span><span class="s">!inode;</span>
+</span></span><span class="line"><span class="cl"><span class="na">Exec</span><span class="o">=</span><span class="s">flatpak run org.telegram.desktop -sendpath %f</span>
 </span></span></code></pre></div><p>Now save your contract and test it by clicking on any file in Files and pressing the &ldquo;Share via Telegram&rdquo; option.</p>
 <p>More examples listed in the <a href="https://github.com/elementary/contractor#examples">Contractor repository</a>.</p>
 <h2 id="bonus">Bonus</h2>
 <h3 id="notification">Notification</h3>
 <p>Sometimes you wanna indicate to yourself when the contract will be completed. To make it happen it&rsquo;s not enough to call just one command, you need to send a notification somehow. Again, elementary already has an application for it named <code>notify-send</code>, and all we need is to combine all the commands into one with help of <code>sh</code>. As you may see in the Tips section it is easy enough:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#bbb">Exec</span>=<span style="color:#ed9d13">sh -c &#34;flatpak run org.telegram.desktop -sendpath %f &amp;&amp; notify-send &#39;File sent&#39; &#39;%f successfully sent via Telegram&#39;&#34;</span>
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="na">Exec</span><span class="o">=</span><span class="s">sh -c &#34;flatpak run org.telegram.desktop -sendpath %f &amp;&amp; notify-send &#39;File sent&#39; &#39;%f successfully sent via Telegram&#39;&#34;</span>
 </span></span></code></pre></div><p>Final version:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">[Contractor Entry]</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">Name</span>=<span style="color:#ed9d13">Share via Telegram</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">Name[ru]</span>=<span style="color:#ed9d13">Поделиться в Telegram</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">Icon</span>=<span style="color:#ed9d13">telegram</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">MimeType</span>=<span style="color:#ed9d13">!inode;</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">Exec</span>=<span style="color:#ed9d13">sh -c &#34;flatpak run org.telegram.desktop -sendpath %f &amp;&amp; notify-send &#39;File sent&#39; &#39;%f successfully sent via Telegram&#39;&#34;</span>
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[Contractor Entry]</span>
+</span></span><span class="line"><span class="cl"><span class="na">Name</span><span class="o">=</span><span class="s">Share via Telegram</span>
+</span></span><span class="line"><span class="cl"><span class="na">Name[ru]</span><span class="o">=</span><span class="s">Поделиться в Telegram</span>
+</span></span><span class="line"><span class="cl"><span class="na">Icon</span><span class="o">=</span><span class="s">telegram</span>
+</span></span><span class="line"><span class="cl"><span class="na">MimeType</span><span class="o">=</span><span class="s">!inode;</span>
+</span></span><span class="line"><span class="cl"><span class="na">Exec</span><span class="o">=</span><span class="s">sh -c &#34;flatpak run org.telegram.desktop -sendpath %f &amp;&amp; notify-send &#39;File sent&#39; &#39;%f successfully sent via Telegram&#39;&#34;</span>
 </span></span></code></pre></div><h3 id="install-deb-packages">Install .deb packages</h3>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">[Contractor Entry]</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">Name</span>=<span style="color:#ed9d13">Install app</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">Name[ru]</span>=<span style="color:#ed9d13">Установить приложение</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">MimeType</span>=<span style="color:#ed9d13">application/vnd.debian.binary-package</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">Description</span>=<span style="color:#ed9d13">Quickly install .deb package</span>
-</span></span><span style="display:flex;"><span><span style="color:#bbb">Exec</span>=<span style="color:#ed9d13">sh -c &#34;pkexec apt install %u &amp;&amp; notify-send &#39;the App installed&#39; -a Apt&#34;</span>
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[Contractor Entry]</span>
+</span></span><span class="line"><span class="cl"><span class="na">Name</span><span class="o">=</span><span class="s">Install app</span>
+</span></span><span class="line"><span class="cl"><span class="na">Name[ru]</span><span class="o">=</span><span class="s">Установить приложение</span>
+</span></span><span class="line"><span class="cl"><span class="na">MimeType</span><span class="o">=</span><span class="s">application/vnd.debian.binary-package</span>
+</span></span><span class="line"><span class="cl"><span class="na">Description</span><span class="o">=</span><span class="s">Quickly install .deb package</span>
+</span></span><span class="line"><span class="cl"><span class="na">Exec</span><span class="o">=</span><span class="s">sh -c &#34;pkexec apt install %u &amp;&amp; notify-send &#39;the App installed&#39; -a Apt&#34;</span>
 </span></span></code></pre></div><h2 id="tips">Tips:</h2>
 <ul>
 <li>Use pkexec to ask for root permissions. Example:
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#bbb">Exec</span>=<span style="color:#ed9d13">pkexec chmod +x %U</span>
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="na">Exec</span><span class="o">=</span><span class="s">pkexec chmod +x %U</span>
 </span></span></code></pre></div></li>
 <li>To call multiple commands at once try to use sh:
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#bbb">Exec</span>=<span style="color:#ed9d13">sh -c &#34;echo &#39;step 1&#39; &amp;&amp; notify-send &#39;Done&#39; &amp;&amp; echo &#39;step 2&#39;&#34;</span>
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="na">Exec</span><span class="o">=</span><span class="s">sh -c &#34;echo &#39;step 1&#39; &amp;&amp; notify-send &#39;Done&#39; &amp;&amp; echo &#39;step 2&#39;&#34;</span>
 </span></span></code></pre></div></li>
 </ul>
         ]]>
@@ -467,89 +586,89 @@ and here is the special type - <code>!inode</code> - which means any file you se
 <h2 id="logic">Logic</h2>
 <p>Ok, out UI is ready enough to build some logic for it, finally :)</p>
 <p>Open <code>window.py</code> and add class vars to connect with widgets from the <code>.ui</code> file.</p>
-<div class="highlight"><div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">17
+<div class="rounded"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Stack with pages</span>
-</span></span><span style="display:flex;"><span>screens = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Connection page widgets</span>
-</span></span><span style="display:flex;"><span>host_entry = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>connect_btn = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>disconnect_btn = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>spinner = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Chat page widgets</span>
-</span></span><span style="display:flex;"><span>send_btn = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>message_entry = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>log_view = Gtk.Template.Child()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"># Declare some class-vars</span>
-</span></span><span style="display:flex;"><span>self.session = <span style="color:#6ab825;font-weight:bold">None</span>
-</span></span><span style="display:flex;"><span>self.connection = <span style="color:#6ab825;font-weight:bold">None</span>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python3" data-lang="python3"><span class="line"><span class="cl"><span class="c1"># Stack with pages</span>
+</span></span><span class="line"><span class="cl"><span class="n">screens</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Connection page widgets</span>
+</span></span><span class="line"><span class="cl"><span class="n">host_entry</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">connect_btn</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">disconnect_btn</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">spinner</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Chat page widgets</span>
+</span></span><span class="line"><span class="cl"><span class="n">send_btn</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">message_entry</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">log_view</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Template</span><span class="o">.</span><span class="n">Child</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Declare some class-vars</span>
+</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="kc">None</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Well, now we are able to call methods of these widgets. But also, we have to handle its signals. Let&rsquo;s connect &ldquo;connect_btn&rdquo;:</p>
-<div class="highlight"><div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">19
+<div class="rounded"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">def</span> __init__(self, **kwargs):
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Some app logic</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    self.connect_btn.connect(<span style="color:#ed9d13">&#39;clicked&#39;</span>, self.on_connect_clicked)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">on_connect_clicked</span>(self, widget):
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Check if there is a text inside the host_entry</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># and grab focus if its empty</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">if</span> <span style="color:#6ab825;font-weight:bold">not</span> self.host_entry.get_text():
-</span></span><span style="display:flex;"><span>        self.host_entry.grab_focus()
-</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">return</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Show user we are trying to connect</span>
-</span></span><span style="display:flex;"><span>    self.spinner.start()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Init libsoup Session, create message and start connection</span>
-</span></span><span style="display:flex;"><span>    self.session = Soup.Session()
-</span></span><span style="display:flex;"><span>    msg = Soup.Message.new(<span style="color:#ed9d13">&#34;GET&#34;</span>, self.host_entry.get_text())
-</span></span><span style="display:flex;"><span>    self.session.websocket_connect_async(msg, <span style="color:#6ab825;font-weight:bold">None</span>, <span style="color:#6ab825;font-weight:bold">None</span>, <span style="color:#6ab825;font-weight:bold">None</span>, self.on_connection)
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Some app logic</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">connect_btn</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;clicked&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_connect_clicked</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_connect_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Check if there is a text inside the host_entry</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># and grab focus if its empty</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_entry</span><span class="o">.</span><span class="n">get_text</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">host_entry</span><span class="o">.</span><span class="n">grab_focus</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Show user we are trying to connect</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">spinner</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Init libsoup Session, create message and start connection</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">Soup</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">msg</span> <span class="o">=</span> <span class="n">Soup</span><span class="o">.</span><span class="n">Message</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&#34;GET&#34;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_entry</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">websocket_connect_async</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_connection</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>The code above is quite straightforward:</p>
@@ -559,99 +678,99 @@ and here is the special type - <code>!inode</code> - which means any file you se
 <li>Init the connection with <a href="https://lazka.github.io/pgi-docs/#Soup-2.4/classes/Session.html%23Soup.Session.websocket_connect_async"><code>websocket_connect_async</code></a></li>
 </ul>
 <p>As a callback for connection function, we put <code>on_connection</code> method, which takes the result of this operation and finish the process.</p>
-<div class="highlight"><div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">21
+<div class="rounded"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">on_connection</span>(self, session, result):
-</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">try</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># Finish connection process</span>
-</span></span><span style="display:flex;"><span>        self.connection = session.websocket_connect_finish(result)
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># If we here, the connection went correctly</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># Connect `message` handler to the connection</span>
-</span></span><span style="display:flex;"><span>        self.connection.connect(<span style="color:#ed9d13">&#39;message&#39;</span>, self.on_message)
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># Show to user all is OK and switch to the Chat page</span>
-</span></span><span style="display:flex;"><span>        self.screens.set_visible_child_name(<span style="color:#ed9d13">&#39;chat&#39;</span>)
-</span></span><span style="display:flex;"><span>        self.disconnect_btn.set_visible(<span style="color:#6ab825;font-weight:bold">True</span>)
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">except</span> <span style="color:#bbb">Exception</span> <span style="color:#6ab825;font-weight:bold">as</span> e:
-</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># In case something goes wrong just print an exception</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#24909d">print</span>(e)
-</span></span><span style="display:flex;"><span>        self.session = <span style="color:#6ab825;font-weight:bold">None</span>
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">finally</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic"># Don&#39;t forget to show a user that process is finished.</span>
-</span></span><span style="display:flex;"><span>        self.spinner.stop()
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Finish connection process</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">websocket_connect_finish</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># If we here, the connection went correctly</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Connect `message` handler to the connection</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Show to user all is OK and switch to the Chat page</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">screens</span><span class="o">.</span><span class="n">set_visible_child_name</span><span class="p">(</span><span class="s1">&#39;chat&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">disconnect_btn</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># In case something goes wrong just print an exception</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">finally</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Don&#39;t forget to show a user that process is finished.</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">spinner</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>We are almost done! All we need to do more is to handle click event from the &ldquo;send_btn&rdquo; and display messages in the &ldquo;log_view&rdquo;.</p>
-<div class="highlight"><div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">5
+<div class="rounded"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">on_message</span>(self, connection, msg_type, message):
-</span></span><span style="display:flex;"><span>    msg = <span style="color:#ed9d13">f</span><span style="color:#ed9d13">&#39;&lt;b&gt;RECEIVED:&lt;/b&gt; </span><span style="color:#ed9d13">{</span>message.get_data().decode()<span style="color:#ed9d13">}</span><span style="color:#ed9d13">\n</span><span style="color:#ed9d13">&#39;</span>
-</span></span><span style="display:flex;"><span>    self.buffer.insert_markup(self.buffer.get_start_iter(),
-</span></span><span style="display:flex;"><span>                              msg,
-</span></span><span style="display:flex;"><span>                              <span style="color:#24909d">len</span>(msg))
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">msg_type</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;RECEIVED:&lt;/b&gt; </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">insert_markup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">get_start_iter</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">                              <span class="n">msg</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                              <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Could it be more simple than that? :wink: Just to display a message in a more readable way we add some Pango markup and use <a href="https://lazka.github.io/pgi-docs/#Gtk-3.0/classes/TextBuffer.html%23Gtk.TextBuffer.insert_markup"><code>insert_markup</code></a> method of <code>Gtk.TextBuffer</code> to&hellip; insert markup!</p>
 <p>Last, but not least required thing is a handler for &ldquo;send_btn&rdquo; signal.</p>
-<div class="highlight"><div style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#686868">11
+<div class="rounded"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">def</span> <span style="color:#447fcf">on_send_clicked</span>(self, widget):
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Get the message from the Entry</span>
-</span></span><span style="display:flex;"><span>    msg = self.message_entry.get_text()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># If there is no message - grab focus.</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">if</span> <span style="color:#6ab825;font-weight:bold">not</span> msg:
-</span></span><span style="display:flex;"><span>        self.message_entry.grab_focus()
-</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">return</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic"># Send a text to the server.</span>
-</span></span><span style="display:flex;"><span>    self.connection.send_text(msg)
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_send_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Get the message from the Entry</span>
+</span></span><span class="line"><span class="cl">    <span class="n">msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">message_entry</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># If there is no message - grab focus.</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">msg</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">message_entry</span><span class="o">.</span><span class="n">grab_focus</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Send a text to the server.</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">send_text</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>For our simple case, all we need is just the <a href="https://lazka.github.io/pgi-docs/#Soup-2.4/classes/WebsocketConnection.html%23Soup.WebsocketConnection.send_text"><code>send_text</code></a> method. But libsoup could do a lot of different stuff, such as <a href="https://lazka.github.io/pgi-docs/#Soup-2.4/classes/WebsocketConnection.html%23Soup.WebsocketConnection.send_binary"><code>send_binary</code></a> or emit a signal if something <a href="https://lazka.github.io/pgi-docs/#Soup-2.4/classes/WebsocketConnection.html%23Soup.WebsocketConnection.signals.error">goes wrong</a>.</p>
@@ -868,31 +987,31 @@ Currently, in development, not for production use.</p>
 <li><input disabled="" type="checkbox" /> Logging</li>
 </ul>
 <h2 id="how-to-use-it">How to use it</h2>
-<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#ed9d13">&#39;dart:io&#39;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">import</span> <span style="color:#ed9d13">&#39;package:laska/laska.dart&#39;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">void</span> main() <span style="color:#6ab825;font-weight:bold">async</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// Create new Laska object with 2 [Isolate]
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">final</span> laska = Laska(isolateCount: <span style="color:#3677a9">2</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// Set global BasicAuth middleware 
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  laska.Use(BasicAuth(<span style="color:#ed9d13">&#39;laska&#39;</span>, <span style="color:#ed9d13">&#39;ermine&#39;</span>, realm: <span style="color:#ed9d13">&#39;Access to private zone&#39;</span>));
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  laska.GET(<span style="color:#ed9d13">&#39;/users/:userId&#39;</span>, getUserById);
-</span></span><span style="display:flex;"><span>  laska.POST(<span style="color:#ed9d13">&#39;/users/&#39;</span>, createUser);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// Start server
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">await</span> run(laska);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">void</span> getUserById(Context context) <span style="color:#6ab825;font-weight:bold">async</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">await</span> context.HTML(<span style="color:#ed9d13">&#39;User: &lt;b&gt;</span><span style="color:#ed9d13">${</span>context.params[<span style="color:#ed9d13">&#39;userId&#39;</span>]<span style="color:#ed9d13">}</span><span style="color:#ed9d13">&lt;/b&gt;&#39;</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">void</span> createUser(Context context) <span style="color:#6ab825;font-weight:bold">async</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">await</span> context.JSON({<span style="color:#ed9d13">&#39;status&#39;</span>: <span style="color:#ed9d13">&#39;created&#39;</span>}, statusCode: HttpStatus.created);
-</span></span><span style="display:flex;"><span>}
+<div class="rounded"><pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;dart:io&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:laska/laska.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="kd">async</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Create new Laska object with 2 [Isolate]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kd">final</span> <span class="n">laska</span> <span class="o">=</span> <span class="n">Laska</span><span class="p">(</span><span class="nl">isolateCount:</span> <span class="m">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// Set global BasicAuth middleware 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">laska</span><span class="p">.</span><span class="n">Use</span><span class="p">(</span><span class="n">BasicAuth</span><span class="p">(</span><span class="s1">&#39;laska&#39;</span><span class="p">,</span> <span class="s1">&#39;ermine&#39;</span><span class="p">,</span> <span class="nl">realm:</span> <span class="s1">&#39;Access to private zone&#39;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">laska</span><span class="p">.</span><span class="n">GET</span><span class="p">(</span><span class="s1">&#39;/users/:userId&#39;</span><span class="p">,</span> <span class="n">getUserById</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">laska</span><span class="p">.</span><span class="n">POST</span><span class="p">(</span><span class="s1">&#39;/users/&#39;</span><span class="p">,</span> <span class="n">createUser</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// Start server
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kd">await</span> <span class="n">run</span><span class="p">(</span><span class="n">laska</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">getUserById</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="kd">async</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">await</span> <span class="n">context</span><span class="p">.</span><span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;User: &lt;b&gt;</span><span class="si">${</span><span class="n">context</span><span class="p">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;userId&#39;</span><span class="p">]</span><span class="si">}</span><span class="s1">&lt;/b&gt;&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">createUser</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="kd">async</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">await</span> <span class="n">context</span><span class="p">.</span><span class="n">JSON</span><span class="p">({</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;created&#39;</span><span class="p">},</span> <span class="nl">statusCode:</span> <span class="n">HttpStatus</span><span class="p">.</span><span class="n">created</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div>
         ]]>
     </turbo:content>
